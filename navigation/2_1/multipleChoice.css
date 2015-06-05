@@ -1,0 +1,141 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	overflow: hidden;	
+}
+
+a img{
+	border:0;
+}
+
+.TrueFalse {
+	height: 90px;
+    width: 953px;
+}
+
+#tf2{
+	border-bottom: medium solid #123168;	
+}
+
+
+
+#truefalses {
+    left: 90px;
+    position: absolute;
+    top: 326px;
+}
+
+.stem {
+	color: #123168;
+    /*float: left;*/
+    font-family: finlandia_interfacebold;
+    font-size: 32px;
+    font-weight: bold;
+    vertical-align: middle;
+    width: 485px;
+	padding-left: 15px;
+	padding-top: 15px;
+	line-height: 30px;
+}
+
+#tf2 > .stem{
+	line-height: 59px;
+}
+
+.mymark {
+	position: absolute;
+    top: 0px;
+}
+
+.hideMe{
+	display:none;
+}
+
+.showMe{
+	display:block;
+}
+
+.showCorr {
+    color: blue;
+}
+
+.checkCorr {
+    color: green;
+}
+
+.highme {
+	background-color:#CCC;
+}
+
+#readTextarea .under {
+   	text-decoration: none;
+	background-color:#CCC;
+}
+
+.checkWron {
+    color: red;
+}
+
+img.imageChoicePos{
+	vertical-align:top;
+}
+
+.sidebarCont2{
+	border:thick;
+	width: 350px;  
+	padding: 0.5em; 
+	margin: 10px 10px 10px 0; 
+	background: #DDD;
+}
+
+.MyExercise {
+    display: inline;
+    float: left;
+    width: 1024px;
+	position:relative;
+	left:0px;
+	top:0px;
+	height:718px;
+}
+
+UL { 
+	position: relative;
+    top: 3px;
+}
+
+UL LI { 
+	list-style: none; 
+	line-height: 20px;
+	display:inline-table;
+	width: 100px;
+	cursor:pointer;
+	padding-right: 148px;
+}
+
+div#truefalses {
+    -ms-animation-duration: 5s;
+    -webkit-animation-duration:  5s;
+    animation-duration: 5s;
+    /*-vendor-animation-delay: 2s;*/
+    /*-vendor-animation-iteration-count: infinite;*/
+    -webkit-transition: 1s ease-in-out;
+    -moz-transition: 1s ease-in-out;
+    -o-transition: 1s ease-in-out;
+    transition: 1s ease-in-out;
+  
+}
+
+div#truefalses.solvedAnimation {
+	-webkit-transform: scale(0.67);
+    -moz-transform: scale(0.67);
+    -o-transform: scale(0.67);
+    -ms-transform: scale(0.67);
+    transform: scale(0.67);
+}
+
+div#truefalses ul>li>span{
+	-ms-animation-duration: 3s;
+    -webkit-animation-duration:  3s;
+    animation-duration: 3s;
+}

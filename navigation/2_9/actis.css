@@ -1,0 +1,87 @@
+@charset "utf-8";
+/* CSS Document */
+body {
+	position: relative;
+	margin: auto;
+	background: gray;
+}
+.actTitle > div {
+	padding: 0;
+}
+
+.exLabel {
+	position: absolute;
+    top: 0;
+}
+
+.exBottle {
+	position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.exRubric {
+	left: 213px;
+    position: absolute;
+    top: 0;
+}
+
+#redFrame {
+    left: 133px;
+    position: absolute;
+    top: 328px;
+}
+
+#picA {
+    left: 10px;
+    position: absolute;
+    top: 129px;
+	-ms-animation-delay: 1s;
+    -webkit-animation-delay:  1s;
+    animation-delay: 1s;
+}
+
+#picB {
+    left: 387px;
+    position: absolute;
+    top: 85px;
+	-ms-animation-delay: 2s;
+    -webkit-animation-delay: 2s;
+    animation-delay: 2s;
+}
+
+#picC {
+    left: 698px;
+    position: absolute;
+    top: 130px;
+	-ms-animation-delay: 3s;
+    -webkit-animation-delay: 3s;
+    animation-delay: 3s;
+}
+
+#picD {
+    left: 742px;
+    position: absolute;
+    top: 445px;
+	-ms-animation-delay: 4s;
+    -webkit-animation-delay: 4s;
+    animation-delay: 4s;
+}
+
+#picE {
+    left: 381px;
+    position: absolute;
+    top: 446px;
+	-ms-animation-delay: 5s;
+    -webkit-animation-delay: 5s;
+    animation-delay: 5s;
+}
+
+#picF {
+    left: 11px;
+    position: absolute;
+    top: 429px;
+	-ms-animation-delay: 6s;
+    -webkit-animation-delay: 6s;
+    animation-delay: 6s;
+}

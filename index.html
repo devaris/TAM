@@ -1,0 +1,168 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <TITLE>Coca Cola Hellenic - TAM</TITLE>
+        <link rel="stylesheet" href="css/animate.css">
+        <link rel="stylesheet" href="fonts/webfonts.css">
+        <link rel="stylesheet" href="css/global.css" type="text/css" media="screen, projection"/>
+        <link rel="stylesheet" href="css/intro.css" type="text/css" media="screen, projection"/>
+        <link rel="stylesheet" href="css/menu.css" type="text/css" media="screen, projection"/>
+        <link rel="stylesheet" href="css/menu2.css" type="text/css" media="screen, projection"/>
+    
+        <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+        <script type="text/javascript" src="js/jquery-ui.js"></script>
+        <script src="js/jquery.cookie.js"></script>
+        
+        <script src="js/common.js"></script>
+
+        <script type="text/javascript" src="js/main.js"></script> 
+        <script type="text/javascript" src="js/clickmeIntro.js"></script>       
+        <script type="text/javascript" src="js/menu2.js"></script>
+        
+        <script type="text/javascript" src="js/scorm/SCORM_API_wrapper.js"></script>
+        <script type="text/javascript" src="js/scorm/initScorm.js"></script>
+         
+        <script>
+		   $(document).ready(function(){
+				  
+				// 1st End of Animation
+				$("#intro3").one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", handleIntro);
+
+				// Navigation Buttons Click
+				$("#prevBut").css('visibility','hidden');
+				$("#prevBut").click(assignNavIntro);
+				$("#nextBut").click(assignNavIntro);
+				// Home Click
+				$("#homeBut").css('visibility','hidden');
+				$("#homeBut").click(goHome);				
+			
+				// Next Button HIDDEN @ Start????
+				introNextHide();
+				
+				// INTRO ACTIVITY : Slide 4
+				runSlide4DocumentReady();
+				
+				// *** 2nd Menu2 initially hidden ***
+				$(".menu2").css('display','none');
+				
+				// IS MAIN CHAPTERS COMPLETED?
+				// UNLOCK 5th Chapter
+				//checkChaptersCompleted();
+				
+				
+				$("#contentFrame").attr("src", "exercise.html");
+				
+				
+            }); // End of $(document).ready
+        </script>
+          
+    </head>
+    
+	<BODY style="margin:0">
+    
+        <div class="wrapper">
+        	
+            <!-- 1st Screen -->
+            <div class="introLogos">
+                <img id="intro3" class="animated bounceInLeft" src="images/intro/03.png">
+                <img id="intro1" class="animated rotateIn" src="images/intro/01.png">
+                <img id="intro2" class="animated lightSpeedIn" src="images/intro/02.png">
+            </div>  
+            
+            <!-- VIDEO DIV (slide 2,3,5) -->
+            <div> 
+                <video src="videos/intro.mp4">
+                     video not supported
+                </video>
+                
+                <div id="videoScript1">Hi! We are coming to you today from Zero Café in Sofia, Bulgaria. We have been here, basically all week, looking at business plans for next year, and, guys, we have a real issue. It is Total Age Management. As a business, we sell the #1 brand in the world. It's the highest quality, it's the kind of brand that customers want to put on their wall, and it's the brand that makes us all have a living. We need to make sure that we have the highest quality available. We need to make sure that what we give to consumers is correct. And that the quality of our service and the way we manage the products in the trade matches the quality of the brand. Today, in our territories, on an annual basis, we have over 10million cases of expired product. Expired! Not just old, expired! That's 24million servings of expired products in our markets. And that's totally unacceptable. With Chris, Zoltan Syposs and an entire team across our organisation, we put together a cross-functional working group to develop a pilot in 4 countries, 4 Business Units that we are working with today to be able to roll out a process to make a change in our performance. We can't continue going on like this and we need to get it fixed. We need your help. We have to make sure that your service and your dedication to quality is the same as the quality of this product that we produce and we sell. We look forward to working with you over the coming year to make sure that we get this problem fixed. And we thank you for your support and for what you do for our business each and every day. Quality resides in our souls. Make sure it does in yours. 
+                </div>
+                <div id="videoScript2">Hi! I am going to spend a few minutes to give you an understanding of the relationship between the Product Age and the Consumer Experience. To Win with Taste in the marketplace, is crucial to the success of the Coca-Cola Hellenic business. It is a hard fact that Product Age affects both the taste and the appearance of our beverages negatively. It is therefore critical to manage Product Age within Primary Age. But what is Primary Age, I hear you ask. And why is it so important to us? Primary Age is the length of time within which the beverage under controlled conditions delivers the designed taste and appearance. It is an important metric we target to keep our promise delivering consumer satisfaction on every occasion. Total Age Management, also known as TAM, is the structured end to end process we use to ensure our products are fresh and consumed within the Primary Age. To give you a real life example, here I have 2 bottles of Pulpy juice products. One is within the Primary Age. And the other one is beyond Primary Age. And I assume you can guess which is which. The one on my left side is beyond Primary Age and, as you can see, the colour has significantly faded. And take it from me, the taste has also changed and not for the better. TAM is the responsibility of everyone. Its success is dependent on cross-functional accountability, all of us working together. Only this end to end approach, from forecasting accuracy to commercial execution will make the necessary change. But why is this important to each of us? Simply put, to ensure consumer satisfaction, which in return drives sustainable growth for Coca-Cola Hellenic and our success. As you heard from John, we are here to support you and we are counting on your dedication to make this change happen. We wish you every success as you start on your TAM journey helping Coca-Cola Hellenic deliver its promises. 
+                </div>
+                 <div class="goToLetter">
+                    <img src="images/letterBut.png" alt="Go To Letter" width="57" height="57">
+                </div>
+                
+            </div> 
+            <!-- VIDEO DIV (slide 2,3,5) -->
+             
+            <!-- SLIDE 4 -->
+            <div class="slide4">
+            	<div class="slide4a"> 
+                    <img id="slide4_a" src="images/intro/slide4/img01.png">
+                    <img id="slide4_c" src="images/intro/slide4/img04.png">
+                    <img id="slide4_b" src="images/intro/slide4/img03.png">
+                </div>
+                
+                <div class="slide4b"> 
+                    <img id="slide4_3" src="images/intro/slide4/img07.png">
+                    <img id="slide4_1" src="images/intro/slide4/img05.png">
+                    <img id="slide4_2" src="images/intro/slide4/img06.png">
+                    <img id="slide4_4" src="images/intro/slide4/img08.png">
+                    <img id="slide4_5" src="images/intro/slide4/img09.png">
+                </div>
+                
+                <div class="slide4c">
+                	<img id="slide4_T1" src="images/intro/slide4/tick.png">
+                    <img id="slide4_T2" src="images/intro/slide4/tick.png">
+                    <img id="slide4_T3" src="images/intro/slide4/tick.png">
+                    <img id="slide4_T4" src="images/intro/slide4/tick.png">
+                    <img id="slide4_T5" src="images/intro/slide4/tick.png">
+				</div>
+                
+            </div>
+            
+            <div class="menu">
+                <span id="menuText"><img src="images/menu/text.png"></span>
+                <span id="menuCircle"><img src="images/menu/circle.png"></span>
+                <span id="menuBack"><img src="images/menu/people.png"></span> 
+                            
+                <div id="menu1"><img src="images/menu/img01.png"></div>
+                <div id="menu2"><img src="images/menu/img02.png"></div>
+                <div id="menu3"><img src="images/menu/img03.png"></div>
+                <div id="menu4"><img src="images/menu/img04.png"></div>
+                <!-- <div id="menu4b"><img src="images/menu/img05.png"></div> -->
+                <div id="menu5"><img src="images/menu/img05.png"></div>
+            </div>
+            
+            <div class="menu2">
+
+				<!-- <img src="../../images/exBackground.jpg" alt="Exercise Image" name="exImage" width="1024" height="768" id="exImage">*/ -->
+                <div  class="exLabelM2"><img src="images/menu2/title.png" alt="Exercise Label" name="exLabel" width="503" height="32"></div>
+                <div  id="bigCircleM2" class="animated bounceIn"><img src="images/menu2/bigCircle.png" alt="bigCircle" width="896" height="749"></div>
+                <div  id="redGreyShadowsM2" class="animated fadeIn"><img src="images/menu2/redGreyShadows.png" alt="redGreyShadows" width="462" height="348"></div>
+                <div  id="redTextM2" class="animated bounceIn"><img src="images/menu2/redText.png" alt="redText" width="333" height="219"></div>
+                <div  id="greyTextM2" class="animated bounceIn"><img src="images/menu2/greyText.png" alt="greyText" width="335" height="220"></div>    
+                
+                <div  id="picAM2" class="animated fadeIn"><img src="images/menu2/text1.png" alt="Picture A" width="342" height="143"></div>
+                <div  id="picBM2" class="animated fadeIn"><img src="images/menu2/text2.png" alt="Picture B" width="317" height="168"></div>
+                <div  id="picCM2" class="animated fadeIn"><img src="images/menu2/text3.png" alt="Picture C" width="281" height="114"></div>
+                <div  id="picDM2" class="animated fadeIn"><img src="images/menu2/text4.png" alt="Picture D" width="328" height="203"></div>
+                <div  id="picEM2" class="animated fadeIn"><img src="images/menu2/text5.png" alt="Picture E" width="260" height="266"></div>
+                
+                <div  id="ticksM2" class="animated fadeIn"><img src="images/menu2/ticks.png" alt="Ticks" width="880" height="563"></div>
+
+
+            </div>
+            
+            <iframe style="width: 100%; height: 99%" id="contentFrame" src="exercise.html"></iframe>
+            
+            <!-- BUTTONS -->
+            <div id="prevBut" class="buttons"><img src="images/previous.png"></div>
+            <div id="homeBut" class="buttons"><img src="images/home.png"></div>
+            <div id="nextBut" class="buttons"><img src="images/next.png"></div>
+            
+              
+        </div><!-- Wrapper end -->
+        
+        <audio autoplay loop>
+            <source src="audio/background.mp3">
+            <source src="audio/background.ogg">
+        </audio>
+
+    
+    <script src="js/retina-1.1.0.min.js"></script>
+    
+    </BODY>
+</HTML>

@@ -1,0 +1,19 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	height: 768px;
+    margin: 0;
+    width: 1024px;
+	overflow: hidden;	
+}
+
+.moduleTitle {
+    left: 25px;
+    position: absolute;
+    top: 0;
+}
+
+
+
+

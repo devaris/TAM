@@ -1,0 +1,183 @@
+@charset "utf-8";
+/* CSS Document */
+* {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+
+div.wrapper {
+    width:1024px;
+    height:768px;
+    margin:auto;
+    background-color: white;
+    position: relative;
+
+}
+
+body {
+    background-color:grey;
+}
+
+
+.isOn {
+    visibility:visible;
+}
+
+.isOff {
+    visibility:hidden;
+}
+/**************************************************************/
+
+div#ex0, div#ex3 {
+    background-image: url("../images/0.jpg");
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+div.rightDoor, div.leftDoor,div.rightDoor1, div.leftDoor1 {
+    position: absolute;
+    top: 73.5%;  
+}
+
+div.rightDoor,div.rightDoor1 {
+    left: 50%;
+}
+
+
+
+/*
+this adds a nice glow to a rectangular thing
+@keyframes pulse {
+	0% { box-shadow: 0 0 14px rgba(255,255,255,0.2); }
+	50% { box-shadow: 0 0 14px rgba(255,255,255,0.9); }
+	100% { box-shadow: 0 0 14px rgba(255,255,255,0.2); }
+}
+
+@-webkit-keyframes pulse {
+	0% { -webkit-box-shadow: 0 0 14px rgba(255,255,255,0.2); }
+	50% { -webkit-box-shadow: 0 0 14px rgba(255,255,255,0.9); }
+	100% { -webkit-box-shadow: 0 0 14px rgba(255,255,255,0.2); }
+}
+
+.act0key {
+-webkit-animation: pulse 4s infinite ease-in-out;
+animation: pulse 4s infinite ease-in-out;
+}
+
+now trying for the round...
+*/
+
+@keyframes border-pulsate {
+    0%   { border-color: rgba(255,255,255,0.2); }
+    50%  { border-color: rgba(255,255,255,0.9); }
+    100% { border-color: rgba(255,255,255,0.2); }
+}
+
+@-webkit-keyframes border-pulsate {
+    0%   { border-color: rgba(255,255,255,0.2); }
+    50%  { border-color: rgba(255,255,255,0.9); }
+    100% { border-color: rgba(255,255,255,0.2); }
+}
+
+@-moz-keyframes border-pulsate {
+    0%   { border-color: rgba(255,255,255,0.2); }
+    50%  { border-color: rgba(255,255,255,0.9); }
+    100% { border-color: rgba(255,255,255,0.2); }
+}
+
+@-ms-keyframes border-pulsate {
+    0%   { border-color: rgba(255,255,255,0.2); }
+    50%  { border-color: rgba(255,255,255,0.9); }
+    100% { border-color: rgba(255,255,255,0.2); }
+}
+
+div.act0 {
+    /*overflow: hidden;*/
+}
+
+.act0key {
+    display: block;
+    margin: 20px auto;
+    /*border: 1px solid rgba(255, 255, 255, 0.2);*/
+    cursor: pointer;
+    /*border-radius :100px;*/
+    /*-webkit-animation: border-pulsate 2s infinite;
+    -moz-animation: border-pulsate 2s infinite;
+    -ms-animation: border-pulsate 2s infinite;
+    -o-animation: border-pulsate 2s infinite;
+    animation: border-pulsate 2s infinite;*/
+}
+
+.act0 > img, .act0_3 > img {
+    position: relative;
+    top: 130px;
+    left: 10px;
+}
+
+div.act0 > div.caranim {
+    display: none;
+    left: -2px;
+    position: relative;
+    top: -1px;    
+}
+
+#brandAnime {
+    display: none;
+    position: absolute;
+    top: 0;
+}
+
+div.act10 > div.manDrinking {
+    left: 0px;
+    position: absolute;
+    top: 0px; 
+}
+
+div.rightDoor, div.leftDoor {
+    -ms-animation-duration: 5s;
+    -webkit-animation-duration:  5s;
+    animation-duration: 5s;
+    /*-vendor-animation-delay: 2s;*/
+    /*-vendor-animation-iteration-count: infinite;*/
+}
+div.a34 {
+    background-image: url(../images/7.png);
+}
+
+#buttonsGraphs{
+    left: 62px;
+    position: absolute;
+    top: 37px;
+    width: 106px;
+}
+
+.butGrafs{
+    padding: 0 0 8px;
+}
+
+.buttonPushed{
+    height: 90%;
+    padding: 5px 0 14px;
+    width: 90%;
+}
+
+div.preloader {
+    visibility: hidden;
+    overflow:hidden;
+    float: left;
+    width: 1px;
+    height: 1px;
+    left: 0px;
+}
+
+#myPDF{
+	left: 432.5px;
+    position: absolute;
+    top: 640px;
+	cursor:pointer;
+}

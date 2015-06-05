@@ -1,0 +1,118 @@
+@charset "utf-8";
+/* CSS Document */
+/*
+body {
+	position: relative;
+	margin: auto;
+	background: gray;
+}
+*/
+
+.exLabelM2 {
+	position: absolute;
+    top: 5px;
+}
+#bigCircleM2 {
+    left: 61px;
+    position: absolute;
+    top: 14px;
+	-ms-animation-delay: 2s;
+    -webkit-animation-delay:  2s;
+    animation-delay: 2s;
+}
+#redGreyShadowsM2 {
+    left: 270px;
+    position: absolute;
+    top: 206px;
+	-ms-animation-delay: 1.2s;
+    -webkit-animation-delay:  1.2s;
+    animation-delay: 1.2s;
+}
+#redTextM2 {
+    left: 391px;
+    position: absolute;
+    top: 213px;
+	-ms-animation-delay: 0.5s;
+    -webkit-animation-delay:  0.5s;
+    animation-delay: 0.5s;
+}
+#greyTextM2 {
+    left: 276px;
+    position: absolute;
+    top: 327px;
+	-ms-animation-delay: 1s;
+    -webkit-animation-delay:  1s;
+    animation-delay: 1s;
+}
+
+/*
+.actTitleM2 > div {
+	padding: 0;
+}
+.exBottleM2 {
+	position: absolute;
+    right: 0;
+    top: 0;
+}
+.exRubricM2 {
+	left: 213px;
+    position: absolute;
+    top: 0;
+}
+*/
+
+
+
+#picAM2 {
+    left: 664px;
+    position: absolute;
+    top: 66px;
+	-ms-animation-delay: 3s;
+    -webkit-animation-delay:  3s;
+    animation-delay: 3s;
+}
+
+#picBM2 {
+    left: 691px;
+    position: absolute;
+    top: 241px;
+	-ms-animation-delay: 4s;
+    -webkit-animation-delay: 4s;
+    animation-delay: 4s;
+}
+
+#picCM2 {
+    left: 437px;
+    position: absolute;
+    top: 533px;
+	-ms-animation-delay: 5s;
+    -webkit-animation-delay: 5s;
+    animation-delay: 5s;
+}
+
+#picDM2 {
+    left: 47px;
+    position: absolute;
+    top: 494px;
+	-ms-animation-delay: 6s;
+    -webkit-animation-delay: 6s;
+    animation-delay: 6s;
+}
+
+#picEM2 {
+    left: 29px;
+    position: absolute;
+    top: 121px;
+	-ms-animation-delay: 7s;
+    -webkit-animation-delay: 7s;
+    animation-delay: 7s;
+}
+
+#ticksM2 {
+    left: 147px;
+    position: absolute;
+    top: 60px;
+	-ms-animation-delay: 9s;
+    -webkit-animation-delay: 9s;
+    animation-delay: 9s;
+}

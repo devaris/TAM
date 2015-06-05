@@ -1,0 +1,105 @@
+@charset "utf-8";
+/* CSS Document */
+
+body, input{
+    font-family: Calibri, Arial;
+    text-align: center;
+}
+
+.introMenu{
+    /*width: 1024px;
+    height:	768px;	*/
+}
+
+#menuItem0, #menuItem1, #menuItem2, #menuItem3, #menuItem4, #menuItem5, #menuItem6, #menuItem7, #menuItem8, #menuItem9, #menuItem10 {
+	/*border: medium solid #FFFFFF;*/
+    z-index: 2;
+}
+
+#menuItem0 {
+    cursor: pointer;
+    height: 99px;
+    left: 62px;
+    position: absolute;
+    top: 37px;
+    width: 326px;
+}
+
+#menuItem4 {
+    cursor: pointer;
+    position: absolute;
+    top: 156px;
+	left: 62px;
+	width: 326px;
+	height: 99px;
+}
+
+#menuItem5 {
+    cursor: pointer;
+    position: absolute;
+    top: 275px;
+	left: 62px;
+	width: 326px;
+	height: 99px;
+}
+
+#menuItem7 {
+    cursor: pointer;
+    position: absolute;
+    top: 394px;
+	left: 62px;
+	width: 326px;
+	height: 99px;
+}
+
+#menuItem8 {
+    cursor: pointer;
+    position: absolute;
+    top: 514px;
+	left: 62px;
+	width: 326px;
+	height: 99px;
+}
+
+#menuItem9 {
+    cursor: pointer;
+    position: absolute;
+    top: 634px;
+	left: 62px;
+	width: 326px;
+	height: 99px;
+}
+
+#backImage {
+    position:relative;
+}
+
+#buttons{	
+    /*height:50px;
+    background-color:#361935;*/	
+    height: 50px;
+    position: absolute;
+    right: 17px;
+    top: 700px;
+}
+
+.exClass{
+    width:1024px;
+    height:768px;	
+}
+
+#exercises{
+    /*width:1024px;*/
+    /*height:738px;*/
+}
+
+object {
+    overflow: hidden;
+}
+
+#the_end{
+	position:absolute;
+	left:0px;
+	top:0px;
+	
+}

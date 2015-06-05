@@ -1,0 +1,79 @@
+@charset "utf-8";
+
+/* MENU */
+.menu{
+	background-image: url("../images/menu/backgroundM.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+	
+	height: 100%;
+    width: 100%;
+	
+	display:none;
+}
+.menu > div, .menu > span{	
+	position:absolute;
+	top:0;
+}
+#menuCircle {     
+	
+}
+#menuText {     
+	
+}
+#menuBack {
+    left: 235px;
+    top: 200px;
+	
+	-moz-animation-delay:1s;
+  	-webkit-animation-delay:1s;
+	animation-delay:1s;
+}
+#menu1 {
+    left: 560px;
+	top: 15px;
+	cursor:pointer;
+	
+	-moz-animation-delay:2s;
+  	-webkit-animation-delay:2s;
+	animation-delay:2s;
+}
+#menu2 {
+    left: 720px;
+    top: 365px;
+	cursor:pointer;
+	
+	-moz-animation-delay:3s;
+  	-webkit-animation-delay:3s;
+	animation-delay:3s;
+}
+#menu3 {
+    left: 400px;
+    top: 545px;
+	cursor:pointer;
+	
+	-moz-animation-delay:4s;
+  	-webkit-animation-delay:4s;
+	animation-delay:4s;
+}
+#menu4 {
+    left: 40px;
+    top: 400px;
+	cursor:pointer;
+	
+	-moz-animation-delay:5s;
+  	-webkit-animation-delay:5s;
+	animation-delay:5s;
+}
+/*#menu4b {*/
+#menu5 {
+    left: 125px;
+    top: 50px;
+	
+	opacity:0.5;
+	/*cursor:pointer;*/
+	
+	-moz-animation-delay:6s;
+  	-webkit-animation-delay:6s;
+	animation-delay:6s;
+}

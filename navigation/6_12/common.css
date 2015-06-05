@@ -1,0 +1,149 @@
+@charset "utf-8";
+/* CSS Document */
+
+draggable {
+	border:thick;
+	width: 100px; 
+	height: 100px; 
+	/*padding: 0.5em; */
+	float: left; 
+	/*margin: 10px 10px 10px 0; */
+	position : relative;
+	cursor : pointer;
+}
+
+/*.draggable {
+	cursor : pointer;
+}*/
+
+.draggable:hover {
+	cursor : pointer;
+}
+
+droppable {
+	border:thick;
+	width: 100px; 
+	height: 100px; 
+	/*padding: 0.5em; */
+	float: left; 
+	/*margin: 10px 10px 10px 0; */
+	position : relative;
+}
+
+#dragItems {
+	 width: 150px; 
+	 height: 150px; 
+	 padding: 0.5em; 
+	 float: left; 
+	 margin: 10px;
+}
+
+#dropItems {
+	 width: 150px; 
+	 height: 150px; 
+	 padding: 0.5em; 
+	 float: left; 
+	 margin: 10px;
+}
+
+.buttonsAll {
+    float: left;
+    left: 10%;
+    position: absolute;
+    top: 50%;
+}
+
+.readText {
+	float: none;
+}
+
+.showCorr {
+	color:green;
+}
+
+.showErr {
+	color:red;
+}
+
+.readTextarea{
+   border:2px none #999;
+    float: left;
+    height: 350px;
+    overflow: auto;
+	padding:10px 0;
+    width: 440px;
+	position: absolute;
+    left: 0px;
+}
+
+TrueFalse {
+    border: thick none;
+    float: left;
+    height: 100px;
+    margin: 10px 10px 10px 0;
+    padding: 0.5em;
+    width: 100px;
+}
+
+.showCorr {
+    color: blue;
+}
+.checkCorr {
+    color: green;
+}
+.under {
+    text-decoration: underline;
+}
+.checkWron {
+    color: red;
+	/*visibility:hidden;*/
+	animation-duration:2s;
+	-webkit-animation-duration:2s; /* Safari and Chrome */
+}
+#content {
+    border: 2px solid #999999;
+    float: left;
+    height: 300px;
+    overflow: auto;
+    padding: 10px;
+    width: 300px;
+}
+.MyExercise {
+    display: inline;
+    float: left;
+    width: 400px;
+}
+
+.exLabel {
+	position: absolute;
+    top: 0;
+}
+
+.exBottle {
+	position: absolute;
+    right: 0;
+    top: 0;
+	-webkit-animation-delay: 0.6s; /* Chrome, Safari, Opera */
+    animation-delay: 0.6s;
+}
+
+.ExRubric {
+	left: 245px;
+    position: absolute;
+    top: 153px;
+    -webkit-animation-delay: 1.2s; /* Chrome, Safari, Opera */
+    animation-delay: 1.2s;
+}
+
+.corner_label {
+	position: absolute;
+	top: 0;
+	left: 20px;
+}
+
+.exInfo {
+    bottom: -23px;
+    left: 10px;
+    position: absolute;
+	display:none;
+}

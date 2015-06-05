@@ -54,20 +54,21 @@ function initCourse(){
 		/**** GET SCORM Score *****/
 		var savedScore = scorm.get("cmi.score.raw");
 		var savedScaledScore = scorm.get("cmi.score.scaled");
+		var score;
 		
 		if (savedScore == "unknown" || savedScore == "" || savedScore == "null") {
-			//score = 0;			
+			score = 0;			
 		} else {
-			//score = parseInt(savedScore);
-			//score = savedScore*1;
+			score = parseInt(savedScore);
+			score = savedScore*1;
 		}
-		traceMsg("INIT GET > score: "+score+" | savedScore: "+savedScore+" | savedScaledScore: "+savedScaledScore+" | scormMinScore: "+scormMinScore+" | scormMaxScore: "+scormMaxScore);
 		
 		/**** SET SCORM Score *****/
 		//savedScore = scorm.set("cmi.score.raw", score);
 		//savedScaledScore = scorm.set("cmi.score.scaled", (score / 100));
-		traceMsg("INIT SET > savedScore: "+savedScore+" | savedScaledScore: "+savedScaledScore);
 		
+		traceMsg("INIT GET > score: "+score+" | savedScore: "+savedScore+" | savedScaledScore: "+savedScaledScore+" | scormMinScore: "+scormMinScore+" | scormMaxScore: "+scormMaxScore);
+				
 		
 		var savedData = scorm.get("cmi.suspend_data");
 		if (savedData == "unknown" || savedData == "" || savedData == "null") {
@@ -75,6 +76,8 @@ function initCourse(){
 		} else {
 			fillScormArrays();	
 		}
+		
+		traceMsg("INIT Suspend_Data > "+savedData);
 		
 		// IF Chapter 5 Score is Higher than 90%, proceed to Menu2
 		checkScoreChap5();
@@ -195,6 +198,13 @@ function saveScormArrays(){
 }
 //saveScormArrays();
 
+function setComplete(){
+	if(lmsConnected){
+		var success = scorm.set("cmi.completion_status", "completed");
+		scorm.save();
+		scorm.quit();
+	}
+}
 
 function unloadHandler(){
 	traceMsg("unloadHandler");

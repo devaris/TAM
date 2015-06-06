@@ -137,6 +137,11 @@ li.column3 .correct {
 	left: 415px;
 } 
 
+li.column3 .wrong {
+	top: 66px;
+	left: 415px;
+} 
+
 .hideMe{
 	display:none;
 }

@@ -10,6 +10,6 @@ var totalQs = 4;
 
 $(document).ready(function() {
 	// COMPLETED MAIN ACTIVITY 
-    if(window.top){window.top.activateFor();} else {window.parent.activateFor();}
+    window.parent.activateFor();
 	//positionText(myText);	
 });

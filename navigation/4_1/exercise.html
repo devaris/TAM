@@ -23,19 +23,19 @@ $(document).ready(function() {
 	 });*/
 	 $(".choice1").on("click", function(){
 		//window.location.href = "1/exercise.html";
-		if(window.top){window.top.moveAtSubMenus(1);} else {window.top.moveAtSubMenus(1);}
+		window.parent.moveAtSubMenus(1);
 	 });
 	 $(".choice2").on("click", function(){
 		//window.location.href = "2/exercise.html";
-		if(window.top){window.top.moveAtSubMenus(2);} else {window.top.moveAtSubMenus(2);}
+		window.parent.moveAtSubMenus(2);
 	 });
 	 $(".choice3").on("click", function(){
 		//window.location.href = "3/exercise.html";
-		if(window.top){window.top.moveAtSubMenus(3);} else {window.top.moveAtSubMenus(3);}
+		window.parent.moveAtSubMenus(3);
 	 });
 	 
 	 // COMPLETED MAIN ACTIVITY 
-	if(window.top){window.top.activateFor();} else {window.parent.activateFor();}
+	window.parent.activateFor();
 
 });
 </script>

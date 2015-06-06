@@ -18,18 +18,18 @@
 <script>
 
 // COMPLETED MAIN ACTIVITY 
-if(window.top){window.top.activateFor();} else {window.parent.activateFor();}
+window.parent.activateFor();
 
 $(document).ready(function() {
 						   
 	var checkCompletionFromMain;
-	if(window.top){checkCompletionFromMain=window.top.checkChapter6_Completion();} else {checkCompletionFromMain=window.parent.checkChapter6_Completion();}
+	checkCompletionFromMain=window.parent.checkChapter6_Completion();
 
 	if(checkCompletionFromMain[0] == 0){
 		$(".choice0").css('cursor','pointer');
 		 $(".choice0").on("click", function(){
 			  //window.location.href = "1/1/exercise.html";
-			  if(window.top){window.top.gotoChapter6Activity(1);} else {window.parent.gotoChapter6Activity(1);}		   
+			  window.parent.gotoChapter6Activity(1);		   
 	 	});
 	}
 	
@@ -37,21 +37,19 @@ $(document).ready(function() {
 		$(".choice1").css('cursor','pointer');
 		$(".choice1").on("click", function(){
 		  	//window.location.href = "2/1/exercise.html";
-		  	if(window.top){window.top.gotoChapter6Activity(2);} else {window.parent.gotoChapter6Activity(2);}
-		 });
+		  	window.parent.gotoChapter6Activity(2);});
 	}
 	
 	if(checkCompletionFromMain[2] == 0){
 		  $(".choice2").css('cursor','pointer');
 		  $(".choice2").on("click", function(){
 		  	//window.location.href = "3/1/exercise.html";
-		  	if(window.top){window.top.gotoChapter6Activity(3);} else {window.parent.gotoChapter6Activity(3);}
-	 	});
+		  	window.parent.gotoChapter6Activity(3);});
 	}
 
 	 $(".choice3").on("click", function(){
 		  //window.location.href = "3/exercise.html";
-		  if(window.top){window.top.theEnd();} else {window.parent.theEnd();}
+		  window.parent.theEnd();
 	 });
 	 
 

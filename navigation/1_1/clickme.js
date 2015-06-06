@@ -47,11 +47,7 @@ function checkCompletion(){
 	//if(totalCorr==corrToFind && !checkWrong()){
 	if(totalCorr==corrToFind){
 		//alert("ALL Correct");
-		if(window.top){
-			window.top.activateFor();
-		} else {
-			window.parent.activateFor();
-		}
+		window.parent.activateFor();
 		
 		$(".slide11b img").unbind("click", clickItems);
 		$(".slide11b img").css('cursor','default');

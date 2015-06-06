@@ -190,10 +190,10 @@ function checkAnswers(myItem){
 		$("ul li").attr('style','cursor:default')
 		//setTimeout("openTools()", 3000);
 		audioPlay("completed");
-		this.parent.parent.parent.update_chapter5Array(actScore);
+		this.parent.update_chapter5Array(actScore);
 		//window.location.href = "../2/exercise.html";
 		// COMPLETED MAIN ACTIVITY 
-		if(window.top){window.top.activateFor();} else {window.parent.activateFor();}
+		window.parent.activateFor();
 	} else {
 		//audioWrong();
 	}
@@ -427,7 +427,7 @@ function makePageChanges(theContent){
 					$(y[j]).parent().attr('style','cursor:default');
 				}
 				// COMPLETED MAIN ACTIVITY 
-				if(window.top){window.top.activateFor();} else {window.parent.activateFor();}
+				window.parent.activateFor();
 			}
 		}
 		

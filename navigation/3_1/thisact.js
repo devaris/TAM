@@ -78,10 +78,10 @@ $(document).ready(function() {
 			allObjs++;
 			if(allObjs == 2){
 				// COMPLETED MAIN ACTIVITY 
-				if(window.top){window.top.activateFor();} else {window.parent.activateFor();}
+				window.parent.activateFor();
 				
 				// HOME ANIME 
-				if(window.top){window.top.animateHome();} else {window.parent.animateHome();}
+				window.parent.animateHome();
 			}
 			
 			
@@ -162,10 +162,10 @@ $(document).ready(function() {
 				startAnimation();
 				
 				// COMPLETE
-				if(window.top){window.top.activateFor();} else {window.parent.activateFor();}
+				window.parent.activateFor();
 				
 				// HOME ANIME 
-				if(window.top){window.top.animateHome();} else {window.parent.animateHome();}
+				window.parent.animateHome();
 			}
 		}
     }
@@ -198,10 +198,10 @@ $(document).ready(function() {
 				//alert("open tool crooswd");
 				//setTimeout("openTheTool(3)", 10);
 				startAnimation();
-				if(window.top){window.top.activateFor();} else {window.parent.activateFor();}
+				window.parent.activateFor();
 				
 				// HOME ANIME 
-				if(window.top){window.top.animateHome();} else {window.parent.animateHome();}
+				window.parent.animateHome();
 			}
 		}
     }

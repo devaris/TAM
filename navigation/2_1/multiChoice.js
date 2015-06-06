@@ -207,7 +207,7 @@ function checkAnswers(myItem){
 		//audioCorrect();
 		startAnimation();
 		// COMPLETED MAIN ACTIVITY 
-     	if(window.top){window.top.activateFor();} else {window.parent.activateFor();}
+     	window.parent.activateFor();
 	} else {
 		//audioWrong();
 	}
@@ -375,7 +375,7 @@ function makePageChanges(theContent){
 						$(".exInfo").attr('style','display:block');
 						$(".exInfo").addClass("animated slideInUp");
 						startAnimation();
-						if(window.top){window.top.activateFor();} else {window.parent.activateFor();}
+						window.parent.activateFor();
 					}
 					else{
 						$(y[j].nextElementSibling.firstChild).attr("src", "try_again.png");
@@ -419,7 +419,7 @@ function makePageChanges(theContent){
 			$(y[j]).attr('disabled', true);
 			$(y[j]).parent().attr('style','cursor:default');
 			// COMPLETED MAIN ACTIVITY 
-     		//if(window.top){window.top.activateFor();} else {window.parent.activateFor();}
+     		//window.parent.activateFor();
 		}
 	}
 	//callorig(call1());

@@ -126,7 +126,7 @@ $(document).ready(function() {
 				//window.parent.unlockNextLevel();
 				
 				// COMPLETED MAIN ACTIVITY 
-				if(window.top){window.top.activateFor();} else {window.parent.activateFor();}
+				window.parent.activateFor();
 			}
 	    } 
 		else {
@@ -208,11 +208,7 @@ $(document).ready(function() {
 		    $(this).draggable('disable');
 		    //				alert ("do something in the html");
 			if (thenext==7){
-				if(window.top){
-					window.top.activateFor();
-				} else {
-					window.parent.activateFor();
-				}
+				window.parent.activateFor();
 			}
 		}
 	    });

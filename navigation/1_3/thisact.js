@@ -83,7 +83,7 @@ $(document).ready(function() {
 				allObjs++;
 				if(allObjs == 1){
 				// COMPLETED MAIN ACTIVITY 
-				if(window.top){window.top.activateFor();} else {window.parent.activateFor();}
+				window.parent.activateFor();
 				}			
 			} 
 			else {
@@ -160,7 +160,7 @@ $(document).ready(function() {
 				//setTimeout("openTheTool(3)", 10);
 				
 				// COMPLETED MAIN ACTIVITY 
-				if(window.top){window.top.activateFor();} else {window.parent.activateFor();}
+				window.parent.activateFor();
 	
 			}
 		}
@@ -195,7 +195,7 @@ $(document).ready(function() {
 				//setTimeout("openTheTool(3)", 10);
 				
 				// COMPLETED MAIN ACTIVITY 
-				if(window.top){window.top.activateFor();} else {window.parent.activateFor();}
+				window.parent.activateFor();
 			}
 		}
     }

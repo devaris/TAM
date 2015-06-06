@@ -8,10 +8,10 @@ var totalQs = 4;
 var myScore;
 
 // Return Total Score
-//if(window.top){myScore = window.top.getchapter5Score();} else {myScore = window.parent.getchapter5Score();}
+//myScore = window.parent.getchapter5Score();
 
 // End Scorm
-if(window.top){window.top.setComplete();} else {myScore = window.parent.setComplete();}
+myScore = window.parent.setComplete();
 	
 $(document).ready(function() {
 	document.querySelector("video").play();

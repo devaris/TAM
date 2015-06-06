@@ -16,7 +16,16 @@ function traceMsg(msg){
 function show(val){
    console.log(val);
 }
-
+function setScormScore(score){
+	if(lmsConnected){
+		/**** SET SCORM Score *****/
+		if(score<0){
+			score = 0;
+		}
+		var savedScore = scorm.set("cmi.score.raw", Math.round(score));
+		var savedScaledScore = scorm.set("cmi.score.scaled", (Math.round(score) / 100));
+	}
+}
 
 /***** DEFAULT ************************************/
 
@@ -60,12 +69,10 @@ function initCourse(){
 			score = 0;			
 		} else {
 			score = parseInt(savedScore);
-			score = savedScore*1;
+			//score = savedScore*1;
 		}
 		
-		/**** SET SCORM Score *****/
-		//savedScore = scorm.set("cmi.score.raw", score);
-		//savedScaledScore = scorm.set("cmi.score.scaled", (score / 100));
+		setScormScore(score);
 		
 		traceMsg("INIT GET > score: "+score+" | savedScore: "+savedScore+" | savedScaledScore: "+savedScaledScore+" | scormMinScore: "+scormMinScore+" | scormMaxScore: "+scormMaxScore);
 				
@@ -134,12 +141,12 @@ function fillScormArrays(){
 	var tempArray2=tempArray1[0].split(',');
 	var tempArray3=tempArray1[1].split(',');
 	
-	//alert("tempArray1[0]: "+tempArray1[0]+" |tempArray1[1]: "+tempArray1[1]+" |tempArray2: "+tempArray2+" |tempArray3: "+tempArray3);
+	//console.log("tempArray1[0]: "+tempArray1[0]+" |tempArray1[1]: "+tempArray1[1]+" |tempArray2: "+tempArray2+" |tempArray3: "+tempArray3);
 	
 	var tempCounter2=0;
 	$.each(chaptersCompleted, function(index, value) {
 		$.each(chaptersCompleted[index], function(index2, value2) {
-			chaptersCompleted[index][index2] = tempArray2[tempCounter2];
+			chaptersCompleted[index][index2] = parseInt(tempArray2[tempCounter2]);
 			tempCounter2++;
 		});
     });
@@ -147,12 +154,12 @@ function fillScormArrays(){
 	var tempCounter3=0;
 	$.each(chapter5Array, function(index, value) {
 		$.each(chapter5Array[index], function(index2, value2) {
-			chapter5Array[index][index2] = tempArray3[tempCounter3];
+			chapter5Array[index][index2] = parseInt(tempArray3[tempCounter3]);
 			tempCounter3++;
 		});
     });
 
-	alert("fillScormArrays > chaptersCompleted: "+alertArray(chaptersCompleted)+" chapter5Array: "+alertArray(chapter5Array));
+	//console.log("fillScormArrays > chaptersCompleted: "+alertArray(chaptersCompleted)+" chapter5Array: "+alertArray(chapter5Array));
 	
 }
 //fillScormArrays();
@@ -175,8 +182,19 @@ function saveScormArrays(){
 		});
     });
 	
+	var myScormScore = -6;
+	var myScormScoreCounter = 0;
+	
 	$.each(chapter5Array, function(index, value) {
 		$.each(chapter5Array[index], function(index2, value2) {
+			
+			if(chapter5Array[index][index2]==-1){
+				myScormScore += chapter5Array[index][index2];
+			} else {
+				myScormScore += chapter5Array[index][index2];
+			}
+			myScormScoreCounter++;
+			
 			//if(index2 != (chapter5Array[index].length-1)){
 				tempString2 += value2+",";
 			//}
@@ -194,7 +212,10 @@ function saveScormArrays(){
 	// SAVE ALL INIT	
 	scorm.save();
 	
-	alert("saveScormArrays > savedData: "+savedData+" tempString: "+tempString);
+	var myTotalScormScore = myScormScore/myScormScoreCounter;
+	setScormScore(myTotalScormScore);
+	
+	//console.log("saveScormArrays > savedData: "+savedData+" tempString: "+tempString);
 }
 //saveScormArrays();
 

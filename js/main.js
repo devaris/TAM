@@ -151,7 +151,7 @@ function initCookiesMain(){
 	// IF Chapter 5 Score is Higher than 90%, proceed to Menu2
 	checkScoreChap5();
 	
-	alert("initCookiesMain > chaptersCompleted: "+alertArray(chaptersCompleted)+" ||| chapter5Array: "+alertArray(chapter5Array));
+	//alert("initCookiesMain > chaptersCompleted: "+alertArray(chaptersCompleted)+" ||| chapter5Array: "+alertArray(chapter5Array));
 	//console.log("initCookiesMain > chaptersCompleted: "+alertArray(chaptersCompleted)+" ||| chapter5Array: "+alertArray(chapter5Array));
 }
 //initCookiesMain();
@@ -334,6 +334,9 @@ function checkChaptersCompleted(){
 			disableMainMenuButtons(index);
 			
 			$.each(chaptersCompleted[index], function(index3, value3) {
+				
+				//console.log("Chapters Completed| index : "+index+" | index3 : "+index3+" | value3 : "+value3+" | chaptersCompleted[index].length : "+chaptersCompleted[index].length);
+				
 				if (value3 === 0) {
 					enableMainMenuButtons(index);
 					
@@ -349,6 +352,9 @@ function checkChaptersCompleted(){
 			});	
 		}
     });
+	
+	console.log("Chapters Completed? : "+alertArray(chaptersCompleted));
+	
 }
 
 /***************************************************************** 
@@ -373,7 +379,10 @@ function activateFor(){
 	//chaptersCompleted[countChapters][countActivity-1] = countActivity;
 
 	// Update Cookie
-	cookieMainJSON.selections[countChapters][countActivity-1] = chaptersCompleted[countChapters][countActivity-1];
+	if(cookieMainJSON){
+		cookieMainJSON.selections[countChapters][countActivity-1] = chaptersCompleted[countChapters][countActivity-1];
+	}
+	
 	
 	// SAVE CHANGES IN COOKIE
 	var myBrowser = get_browser();
@@ -398,7 +407,10 @@ function update_chapter5Array(actScore){
 	
 	
 	// Update Cookie
-	cookieMainJSON.extraChapters[subChapterCounter][replaceActivityChap6-1] = chapter5Array[subChapterCounter][replaceActivityChap6-1];
+	if(cookieMainJSON){
+		cookieMainJSON.extraChapters[subChapterCounter][replaceActivityChap6-1] = chapter5Array[subChapterCounter][replaceActivityChap6-1];	
+	}
+	
 	
 	// SAVE CHANGES IN COOKIE
 	var myBrowser = get_browser();
@@ -418,10 +430,10 @@ function getchapter5Score(){
 	jQuery.each(chapter5Array[subChapterCounter], function(index, value) {
 		if((subChapterCounter == 0 || subChapterCounter == 1)&& index != 0 && index != (chapter5Array[subChapterCounter].length-1)){
 			myTotalScore = myTotalScore+value;
-			console.log("Calculate 1: subChapterCounter"+subChapterCounter+" index: "+index);
+			//console.log("Calculate 1: subChapterCounter"+subChapterCounter+" index: "+index);
 		} else if(index != (chapter5Array[subChapterCounter].length-1)){
 			myTotalScore = myTotalScore+value;
-			console.log("Calculate 2: subChapterCounter"+subChapterCounter+" index: "+index);
+			//console.log("Calculate 2: subChapterCounter"+subChapterCounter+" index: "+index);
 		}		
 	});
 	

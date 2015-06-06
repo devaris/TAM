@@ -25,6 +25,7 @@ function setScormScore(score){
 		var savedScore = scorm.set("cmi.score.raw", Math.round(score));
 		var savedScaledScore = scorm.set("cmi.score.scaled", (Math.round(score) / 100));
 	}
+	//show("setScormScore: "+score);
 }
 
 /***** DEFAULT ************************************/
@@ -189,7 +190,7 @@ function saveScormArrays(){
 		$.each(chapter5Array[index], function(index2, value2) {
 			
 			if(chapter5Array[index][index2]==-1){
-				myScormScore = 0;
+				myScormScore += 0;
 			} else {
 				myScormScore += chapter5Array[index][index2];
 			}
@@ -214,6 +215,8 @@ function saveScormArrays(){
 	
 	var myTotalScormScore = myScormScore/myScormScoreCounter;
 	setScormScore(myTotalScormScore);
+	
+	console.log("saveScormArrays > myScormScore: "+myScormScore+" myScormScoreCounter: "+myScormScoreCounter);
 	
 	//console.log("saveScormArrays > savedData: "+savedData+" tempString: "+tempString);
 }

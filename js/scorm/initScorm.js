@@ -182,14 +182,14 @@ function saveScormArrays(){
 		});
     });
 	
-	var myScormScore = -6;
-	var myScormScoreCounter = 0;
+	var myScormScore = 0;
+	var myScormScoreCounter = -6;
 	
 	$.each(chapter5Array, function(index, value) {
 		$.each(chapter5Array[index], function(index2, value2) {
 			
 			if(chapter5Array[index][index2]==-1){
-				myScormScore += chapter5Array[index][index2];
+				myScormScore = 0;
 			} else {
 				myScormScore += chapter5Array[index][index2];
 			}

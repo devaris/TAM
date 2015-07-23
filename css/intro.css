@@ -18,8 +18,18 @@ filter: alpha(opacity=0);
 /* SLIDE 1 */
 .introLogos {
     /*line-height: 768px;*/
-	position: relative;
+	position: absolute;
+	top: 0;
+	
     text-align: center;
+	
+	background-image: url("../images/FirstBackground.jpg");
+	background-color: #CEBBA3;
+    background-repeat: no-repeat;
+    background-position: center center;
+	
+    height: 100%;    
+    width: 100%;
 	
 	/*display:none;*/
 }

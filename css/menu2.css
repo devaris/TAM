@@ -6,7 +6,11 @@ body {
 	margin: auto;
 	background: gray;
 }
+
 */
+.menu2{
+	display:none;
+}
 
 .exLabelM2 {
 	position: absolute;

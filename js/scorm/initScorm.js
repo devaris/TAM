@@ -9,13 +9,11 @@ var hasSCORMscore = false;
 
 function traceMsg(msg){
 	//alert(msg);
-	show(msg);
+	//console.log(msg);
 	//window.close();
 }
 
-function show(val){
-   console.log(val);
-}
+
 function setScormScore(score){
 	if(lmsConnected){
 		/**** SET SCORM Score *****/
@@ -25,18 +23,21 @@ function setScormScore(score){
 		var savedScore = scorm.set("cmi.score.raw", Math.round(score));
 		var savedScaledScore = scorm.set("cmi.score.scaled", (Math.round(score) / 100));
 	}
-	//show("setScormScore: "+score);
+	
+	//traceMsg("setScormScore: "+score);
 }
+
+
 
 /***** DEFAULT ************************************/
 
 function initCourse(){
-	
+
 	//scorm.init returns a boolean
 	lmsConnected = scorm.init();
 	
 	//If the scorm.init function succeeded...
-	if(lmsConnected){			
+	if(lmsConnected){	
 
 		/**** Let's get the completion status to see if the course has already been completed ****/
 		var completionStatus = scorm.get("cmi.completion_status");
@@ -46,7 +47,8 @@ function initCourse(){
 		//If the course has already been completed...
 		if(completionStatus == "completed"){
 			
-			scorm.set("cmi.exit", "logout");			
+			//scorm.set("cmi.exit", "logout");
+			
 			//...let's display a message and close the browser window
 			traceMsg("You have already completed this course. You do not need to continue.");
 		
@@ -79,10 +81,14 @@ function initCourse(){
 				
 		
 		var savedData = scorm.get("cmi.suspend_data");
+		traceMsg("INIT GET > savedData: "+savedData);
+		
 		if (savedData == "unknown" || savedData == "" || savedData == "null") {
-			saveScormArrays();			
+			saveScormArrays();	
+			traceMsg("INIT NO");
 		} else {
 			fillScormArrays();	
+			traceMsg("INIT YES");
 		}
 		
 		traceMsg("INIT Suspend_Data > "+savedData);
@@ -142,7 +148,7 @@ function fillScormArrays(){
 	var tempArray2=tempArray1[0].split(',');
 	var tempArray3=tempArray1[1].split(',');
 	
-	//console.log("tempArray1[0]: "+tempArray1[0]+" |tempArray1[1]: "+tempArray1[1]+" |tempArray2: "+tempArray2+" |tempArray3: "+tempArray3);
+	//traceMsg("tempArray1[0]: "+tempArray1[0]+" |tempArray1[1]: "+tempArray1[1]+" |tempArray2: "+tempArray2+" |tempArray3: "+tempArray3);
 	
 	var tempCounter2=0;
 	$.each(chaptersCompleted, function(index, value) {
@@ -160,7 +166,7 @@ function fillScormArrays(){
 		});
     });
 
-	//console.log("fillScormArrays > chaptersCompleted: "+alertArray(chaptersCompleted)+" chapter5Array: "+alertArray(chapter5Array));
+	traceMsg("fillScormArrays > chaptersCompleted: "+alertArray(chaptersCompleted)+" chapter5Array: "+alertArray(chapter5Array));
 	
 }
 //fillScormArrays();
@@ -210,38 +216,70 @@ function saveScormArrays(){
 	tempString = tempString1 +"|"+tempString2;
 	
 	var savedData = scorm.set("cmi.suspend_data", tempString);
-	// SAVE ALL INIT	
+	// SAVE ALL INIT
 	scorm.save();
 	
 	var myTotalScormScore = myScormScore/myScormScoreCounter;
 	setScormScore(myTotalScormScore);
 	
-	console.log("saveScormArrays > myScormScore: "+myScormScore+" myScormScoreCounter: "+myScormScoreCounter);
+	//traceMsg("saveScormArrays > myScormScore: "+myScormScore+" myScormScoreCounter: "+myScormScoreCounter);
 	
-	//console.log("saveScormArrays > savedData: "+savedData+" tempString: "+tempString);
+	traceMsg("saveScormArrays > savedData: "+savedData+" tempString: "+tempString);
 }
 //saveScormArrays();
+
+function setCompleteEnd(){
+	if(lmsConnected){
+		var success = scorm.set("cmi.completion_status", "completed");
+		/*var success = scorm.set("cmi.success_status", "passed");*/
+		scorm.set("cmi.exit", "normal");
+		scorm.save();
+		scorm.quit();
+		traceMsg("!! setCompleteEnd");
+	}
+}
 
 function setComplete(){
 	if(lmsConnected){
 		var success = scorm.set("cmi.completion_status", "completed");
+		/*var success = scorm.set("cmi.success_status", "passed");*/
+		scorm.set("cmi.exit", "suspend");
 		scorm.save();
-		scorm.quit();
+		traceMsg(":) setComplete");
 	}
+	//console.log("setComplete");
+}
+
+function setInComplete(){
+	
+	if(lmsConnected){
+		
+		var success = scorm.set("cmi.completion_status", "incomplete");
+		scorm.set("cmi.exit", "suspend");
+		scorm.save();
+
+		traceMsg(":| setInComplete");
+	}
+	//console.log("setInComplete");
 }
 
 function unloadHandler(){
+
 	traceMsg("unloadHandler");
+	
 	if(!unloaded){
 		traceMsg("Save on Quit");
+		scorm.set("cmi.exit", "suspend");
 		scorm.save(); //save all data that has already been sent
 		scorm.quit(); //close the SCORM API connection properly
 		unloaded = true;
 	}
 }
 
+/* MOVED to main.js $(document).ready
 $(document).ready(function() {
 	window.onbeforeunload = unloadHandler;
 	window.onunload = unloadHandler;
 	initCourse();
 });
+*/

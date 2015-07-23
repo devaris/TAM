@@ -72,9 +72,11 @@ div.drags > span {
 }
 
 div.drags > ul > li, .qmark, .qlarge, .drop, .dropC, larges {
+	/*
 	animation-delay: 1s;
 	-moz-animation-delay: 1s;
 	-webkit-animation-delay: 1s;
+	*/
 }
 
 .drag1s {

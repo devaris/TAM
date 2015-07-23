@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Exercise 0</title>
+<link rel="stylesheet" href="../../fonts/webfonts.css">
+<link rel="stylesheet" href="../../css/animate.css">
+<link rel="stylesheet" href="../../css/common.css">
+<link rel="stylesheet" href="actis.css" type="text/css" media="screen, projection" />
+<script src="../../js/jquery.js"></script>
+<script src="../../js/jquery-ui.js"></script>
+<script src="../../js/jquery.cookie.js"></script>
+<script src="../../js/jquery.ui.touch-punch.min.js"></script>
+<script src="../../js/common.js"></script>
+<script src="../../js/animation.js"></script>
+<script src="thisact.js"></script>
+<script src="../../js/audiocw.js"></script>
+<script>
+$(document).ready(function() {
+	 $(".choice0").on("click", function(){
+		  //window.location.href = "0/exercise.html";		 
+		  window.parent.moveAtSubMenus(1);
+	 });
+	 $(".choice1").on("click", function(){
+		  //window.location.href = "1/exercise.html";
+		  window.parent.moveAtSubMenus(2);
+	 });
+	 $(".choice2").on("click", function(){
+		  //window.location.href = "2/exercise.html";
+		  window.parent.moveAtSubMenus(3);
+	 });
+	 $(".choice3").on("click", function(){
+		  //window.location.href = "3/exercise.html";
+		  window.parent.moveAtSubMenus(4);
+	 });
+	 
+	// COMPLETED MAIN ACTIVITY 
+    window.parent.activateFor();
+
+});
+</script>
+</head>
+<body>
+<div id="myImage"> <img src="../../images/exBackground.jpg" alt="Exercise Image" name="exImage" width="1024" height="768" id="exImage"> </div>
+<div  class="exLabel"><img src="corner_label.png" alt="Exercise Label" name="exLabel" width="236" height="169"></div>
+<div  class="exRubric"><img src="rubric.png" alt="Exercise Rubric" name="exRubric" width="746" height="274"></div>
+<div  class="exBottle"><img src="bottle.png" alt="Exercise Bottle" name="exBottle" width="461" height="119"></div>
+		
+</div>
+<div class="subtitle animated bounceInLeft"><img src="subtitle.png" alt="Subtitle" width="461" height="33"></div>
+<div class="extraBottle animated zoomIn"><img src="cokeBottle.png" alt="Extra Bottle" width="279" height="395"></div>
+<div style="left: 335px;    position: absolute;    top: 326px;"> 
+	<ul class="choices">
+    <li class="choice0 animated flipInY"><img src="therm0.png" alt="Thermometer 0" width="153" height="337"></li>
+    <li class="choice1 animated flipInY"><img src="therm1.png" alt="Thermometer 1" width="152" height="337"></li>
+  	<li class="choice2 animated flipInY"><img src="therm2.png" alt="Thermometer 2" width="151" height="337"></li>
+  	<li class="choice3 animated flipInY"><img src="therm3.png" alt="Thermometer 3" width="152" height="337"></li>
+    </ul>
+</div>
+<script src="../../js/retina-1.1.0.min.js"></script>
+</body>
+</html>

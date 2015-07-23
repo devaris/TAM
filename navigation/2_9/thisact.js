@@ -10,10 +10,10 @@ var totalQs = 4;
 
 $(document).ready(function() {
 	// COMPLETED MAIN ACTIVITY 
-	if(window.top){window.top.activateFor();} else {window.parent.activateFor();}
+	window.parent.activateFor();
 	
 	// HOME ANIME 
-	if(window.top){window.top.animateHome();} else {window.parent.animateHome();}
+	window.parent.animateHome();
 				
-	 positionText(myText);
+	 //positionText(myText);
 });

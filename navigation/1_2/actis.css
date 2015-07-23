@@ -1,0 +1,48 @@
+@charset "utf-8";
+/* CSS Document */
+body {
+	position:relative;
+	margin:auto;
+	background:gray;
+}
+.actTitle > div {
+	padding:0;
+}
+
+.exLabel {
+	position: absolute;
+    top: 0;
+}
+
+.exBottle {
+	position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.exRubric {
+	left: 218px;
+    position: absolute;
+    top: 0;
+}
+
+.theTable {
+    bottom: 0;
+    left: 4px;
+    position: absolute;
+	-moz-animation-delay:2s;
+  	-webkit-animation-delay:2s;
+	animation-delay:2s;
+}
+
+ul.choices {
+	list-style: none;
+}
+
+ul.choices > li {
+	/*cursor: pointer;*/
+    display: inline-block;
+	-moz-animation-delay:1s;
+  	-webkit-animation-delay:1s;
+	animation-delay:1s;
+}

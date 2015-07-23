@@ -1,14 +1,12 @@
 // JavaScript Document
 var currTar = "";
 var objPositions = {};
-var dndCookie = 'ccTAMex3_1';
-var cookieLifetime = 365;
 var thenext = 1;
 var allObjs = 0;
 var totalQs = 4;
 
 var cTl = {};
-cTl.crosswrdCookie = 'FGcrosswrdCookie';
+cTl.crosswrdCookie = 'ccTAMex3_1';
 
 cTl.cookieLifetime = 365;
 cTl.elements = [];
@@ -47,7 +45,33 @@ function startAnimation(){
 	$(".extraInfo").addClass("animated bounceIn");
 }
 
-$(document).ready(function() {
+function clearCookie(){
+	var myBrowser = get_browser();
+	if ((myBrowser=='Chrome')||(isiPad==true)) {
+		localStorage.setObject(cTl.crosswrdCookie,{});
+	}
+	else{
+		if ($.cookie(cTl.crosswrdCookie)===null){		
+		}
+		else{
+			cookieJSON = $.cookie(cTl.crosswrdCookie)
+		}
+		$.removeCookie(cTl.crosswrdCookie);
+	}	
+}
+
+
+
+$(document).ready(function() {	
+	var doIreset=false;
+	try {
+		doIreset=window.parent.resetEx();
+	}
+	catch(e){
+	}
+	
+	if (doIreset==true)
+		clearCookie();
 	$("#fefo0").css("display", 'none');
 	$("#fefo1").css("display", 'none');
 	$("#fefo2").css("display", 'none');
@@ -78,10 +102,10 @@ $(document).ready(function() {
 			allObjs++;
 			if(allObjs == 2){
 				// COMPLETED MAIN ACTIVITY 
-				if(window.top){window.top.activateFor();} else {window.parent.activateFor();}
+				window.parent.activateFor();
 				
 				// HOME ANIME 
-				if(window.top){window.top.animateHome();} else {window.parent.animateHome();}
+				window.parent.animateHome();
 			}
 			
 			
@@ -162,10 +186,10 @@ $(document).ready(function() {
 				startAnimation();
 				
 				// COMPLETE
-				if(window.top){window.top.activateFor();} else {window.parent.activateFor();}
+				window.parent.activateFor();
 				
 				// HOME ANIME 
-				if(window.top){window.top.animateHome();} else {window.parent.animateHome();}
+				window.parent.animateHome();
 			}
 		}
     }
@@ -198,18 +222,22 @@ $(document).ready(function() {
 				//alert("open tool crooswd");
 				//setTimeout("openTheTool(3)", 10);
 				startAnimation();
-				if(window.top){window.top.activateFor();} else {window.parent.activateFor();}
+				window.parent.activateFor();
 				
 				// HOME ANIME 
-				if(window.top){window.top.animateHome();} else {window.parent.animateHome();}
+				window.parent.animateHome();
 			}
 		}
     }
+	
+	/*
 	var myBrowser = get_browser();
 	if (myBrowser == 'Chrome') {
 	    localStorage.setObject(cTl.highlightCookie, cTl.highlightData);
 	} else {
 	    $.cookie(cTl.highlightCookie, cTl.highlightData, {expires: cTl.cookieLifetime});
 	}
+	
+	*/
     
 });

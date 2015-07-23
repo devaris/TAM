@@ -1,5 +1,8 @@
 // ************ Global Vars ************
 
+// When the app loads
+var firstLoadApp = 1;
+
 // Counters ++
 var countIntro = 0;
 var countChapters = 0;
@@ -13,10 +16,14 @@ var subMenuChapters = [[0,0,0,0,0,0,0],[0,0,2,2,2],[0,0,0,3,3,3,3,0,0],[0],[0,1,
 
 // **** DYNAMIC
 var chaptersCompleted = [[0,0,0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0],[0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]];
-//var chaptersCompleted = [[1,1,1,1,1,1],[1,1,1,1,1],[1,1,1,1,1,1,1,1,1],[1],[1,1,1,1],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]];
+//DEBUG: var chaptersCompleted = [[1,1,1,1,1,1],[1,1,1,1,1],[1,1,1,1,1,1,1,1,1],[1],[1,1,1,1],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]];
+//DEBUG: var chaptersCompleted = [[1,1,1,1,1,1],[1,1,1,1,1],[1,1,1,1,1,1,1,1,1],[1],[1,1,1,1],[1,1,1,1,1,1,1,1,1,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]];
+//DEBUG: var chaptersCompleted = [[1,1,1,1,1,1],[0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0],[0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]];
 
 // Score/Quizzes
 var chapter5Array = [[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1,-1,-1]];
+//DEBUG: var chapter5Array = [[100,100,100,100,100,100,100,100,100,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1,-1,-1]];
+
 var subChapterCounter;
 
 //Property to Change Menu 2
@@ -74,7 +81,7 @@ function checkScoreChap5(){
 	// IF Chapter 5 has more than 90% proceed to the quizzes
 	if (temp5Score >= 90){
 		changeHome();
-		console.log("changeHome!! temp5Score: "+temp5Score);
+		//console.log("changeHome!! temp5Score: "+temp5Score);
 	}	
 }
 
@@ -151,8 +158,7 @@ function initCookiesMain(){
 	// IF Chapter 5 Score is Higher than 90%, proceed to Menu2
 	checkScoreChap5();
 	
-	//alert("initCookiesMain > chaptersCompleted: "+alertArray(chaptersCompleted)+" ||| chapter5Array: "+alertArray(chapter5Array));
-	//console.log("initCookiesMain > chaptersCompleted: "+alertArray(chaptersCompleted)+" ||| chapter5Array: "+alertArray(chapter5Array));
+	//console.log("InitCookiesMain > chaptersCompleted: "+alertArray(chaptersCompleted)+" ||| chapter5Array: "+alertArray(chapter5Array));
 }
 //initCookiesMain();
 
@@ -160,10 +166,63 @@ function initCookiesMain(){
 
 // VIDEO LOADING
 function nextVideo(nextVideoToPlay){
+	/*
 	document.querySelector("video").src = nextVideoToPlay;
 	document.querySelector("video").play();
+	*/
+	$("#contentFrame").attr("src", "navigation/videos/"+nextVideoToPlay+".html");
 }
 // INDIVIDUAL CHAPTER main menu BUTTONS - RESUME From last visit
+
+// Resume Only for the Menu of Chapter 6 (applied ONLY at the menu : 6/1)
+function ResumeChapter6(chapterNum){
+	
+	// Update Chapter to 6
+	updateCountChapters(6);
+	// Update subChapterCounter to 1/2/3
+	if(chapterNum==1||chapterNum==2||chapterNum==3){
+		subChapterCounter=chapterNum;
+	}		
+	
+	var initChap6MenuFrom = 0;
+	
+	switch (subChapterCounter) {
+		case (1):
+			initChap6MenuFrom = 1;
+			break;
+		case (2):
+			initChap6MenuFrom = 11;
+			break;
+		case (3):
+			initChap6MenuFrom = 15;
+			break;
+		default:
+			break;
+	}
+	
+	//console.log("initChap6MenuFrom: "+initChap6MenuFrom+"  (chapter5Array[subChapterCounter].length+initChap6MenuFrom): "+(chapter5Array[subChapterCounter].length+initChap6MenuFrom));
+	
+	for (c=initChap6MenuFrom; c<(chapter5Array[subChapterCounter].length+initChap6MenuFrom); c++){
+		//console.log("initChap6MenuFrom: "+initChap6MenuFrom+" c: "+c+" chaptersCompleted[countChapters][c]: "+chaptersCompleted[countChapters][c]);
+		if(chaptersCompleted[countChapters][c]!=0){
+					
+		} else {
+			updateCountActivity(c+1);
+			break;
+		}
+	}
+	
+	// LOAD EXERCISE - Loads the first activity of Chapter 5 + Chapter 6
+	$("#contentFrame").attr("src", "navigation/"+countChapters+"_"+countActivity+"/exercise.html");
+	
+	// IMPORTANT to be at the end of the func
+	showHidePrevNext();
+	
+	//console.log("ResumeChapter6 > countChapters: "+countChapters+" chapterNum: "+chapterNum+" subChapterCounter: "+subChapterCounter+" countActivity: "+countActivity+" menu2Activated: "+menu2Activated+" | chaptersCompleted: "+alertArray(chaptersCompleted)+" | chapter5Array: "+alertArray(chapter5Array));
+}
+
+
+// Resume Only for the Main Menu (applies only to Chapters 1-5 > ONLY from the Main Menu - Not Menu2)
 function initResumeChapterAct(chapterNum){
 	
 	updateChapterActivityMenuButtons(chapterNum,1);
@@ -178,7 +237,7 @@ function initResumeChapterAct(chapterNum){
 		}
 	});
 
-	console.log("initResumeChapterAct > countChapters: "+countChapters+" countActivity: "+countActivity+" menu2Activated: "+menu2Activated+" | chaptersCompleted: "+alertArray(chaptersCompleted)+" | chapter5Array: "+alertArray(chapter5Array));
+	//console.log("initResumeChapterAct > countChapters: "+countChapters+" countActivity: "+countActivity+" menu2Activated: "+menu2Activated+" | chaptersCompleted: "+alertArray(chaptersCompleted)+" | chapter5Array: "+alertArray(chapter5Array));
 	
 	loadPage(countChapters, countActivity);
 }
@@ -298,6 +357,7 @@ function disableMainMenuButtons(numberOfChapt){
 
 // CHECK COMPLETION OF CHAPTERS
 function checkChaptersCompleted(){
+
 	// UNLOCK 5th - Check if all Active (4) Chapters are Completed 
 	var flag = true;
 	$.each(chaptersCompleted, function(index, value) {
@@ -314,7 +374,7 @@ function checkChaptersCompleted(){
 		}
         return flag;
     });
-	
+
 	// UNLOCK 5th Chapter Menu
 	if(flag){	
 		$("#menu5").unbind("click", menu5);
@@ -325,7 +385,7 @@ function checkChaptersCompleted(){
 	
 	// Use this Parameter to Show Current Unit
 	var myCurrentMenuItem = -1;
-	
+
 	// Check whcih of all Active (4) Chapters are Completed 
 	$.each(chaptersCompleted, function(index, value) {
 		
@@ -353,17 +413,30 @@ function checkChaptersCompleted(){
 		}
     });
 	
-	console.log("Chapters Completed? : "+alertArray(chaptersCompleted));
+	//console.log("Chapters Completed? : "+alertArray(chaptersCompleted));
 	
 }
 
 /***************************************************************** 
 							ACTIVITIES 
 *****************************************************************/
+function saveCompletionMainCookie(){
+	
+	// SAVE CHANGES IN COOKIE
+	var myBrowser = get_browser();
+	if ((myBrowser=='Chrome')||(isiPad==true)) {
+		localStorage.setObject(myCookieMainName,null);
+		localStorage.setObject(myCookieMainName,cookieMainJSON)
+	}
+	else{
+		$.removeCookie(myCookieMainName)
+		$.cookie(myCookieMainName, cookieMainJSON, cookieMainLifetime);
+	}	
+}
 
 // FUNCTION TO RUN When each ACTIVITY is Completed
 function activateFor(){
-	
+	//alert("activateFor");
 	$("#nextBut").css('opacity','1');
 	$("#nextBut").css('pointer-events','all');
 	
@@ -383,17 +456,8 @@ function activateFor(){
 		cookieMainJSON.selections[countChapters][countActivity-1] = chaptersCompleted[countChapters][countActivity-1];
 	}
 	
-	
 	// SAVE CHANGES IN COOKIE
-	var myBrowser = get_browser();
-	if ((myBrowser=='Chrome')||(isiPad==true)) {
-		localStorage.setObject(myCookieMainName,null);
-		localStorage.setObject(myCookieMainName,cookieMainJSON)
-	}
-	else{
-		$.removeCookie(myCookieMainName)
-		$.cookie(myCookieMainName, cookieMainJSON, cookieMainLifetime);
-	}	
+	saveCompletionMainCookie();
 	
 }
 
@@ -413,15 +477,7 @@ function update_chapter5Array(actScore){
 	
 	
 	// SAVE CHANGES IN COOKIE
-	var myBrowser = get_browser();
-	if ((myBrowser=='Chrome')||(isiPad==true)) {
-		localStorage.setObject(myCookieMainName,null);
-		localStorage.setObject(myCookieMainName,cookieMainJSON)
-	}
-	else{
-		$.removeCookie(myCookieMainName)
-		$.cookie(myCookieMainName, cookieMainJSON, cookieMainLifetime);
-	}
+	saveCompletionMainCookie();
 }
 
 function getchapter5Score(){
@@ -460,11 +516,30 @@ function resetChapter5Array(){
 
 function resetEx(){
 	var doReset = false;
-	var replaceActivityChap6 = mapChapter6ActivityCount();
+
+	try {
+		var replaceActivityChap6 = mapChapter6ActivityCount();
+	} catch(err) {
+		//console.log("doReset Err Chapt 6: "+err);
+	}
+
+	//lmsConnected [this can check if SCORM is used]
+	/* if this is enabled it will RESET EVERY time*/
 	
-	if(chapter5Array[subChapterCounter][replaceActivityChap6-1]==-1){
+	if (chaptersCompleted[countChapters][countActivity-1] == 0){
 		doReset = true;
-	}	
+	}
+	
+	try {
+		if(chapter5Array[subChapterCounter][replaceActivityChap6-1]==-1){
+			doReset = true;
+		} 
+	} catch(err) {
+		//console.log("doReset Err chapter5Array: "+err);
+	}
+	
+	//console.log("doReset: "+doReset+" subChapterCounter: "+subChapterCounter+" replaceActivityChap6-1: "+(replaceActivityChap6-1)+" chapter5Array[subChapterCounter][replaceActivityChap6-1]?-1: "+chapter5Array[subChapterCounter][replaceActivityChap6-1]+" chaptersCompleted[countChapters][countActivity-1]?-0: "+chaptersCompleted[countChapters][countActivity-1]);
+	
 	return doReset;
 }
 
@@ -480,11 +555,12 @@ function moveAtSubMenus(subSlideNum){
 	
 	// IMPORTANT to be at the end of the func
 	showHidePrevNext();
+	//console.log("moveAtSubMenus")
 }
 
 // CHAPTER 5
 function homeChapter5(){
-	console.log("homeChapter5 > iFrameLoad 2");
+	
 	
 	updateChapterActivityMenuButtons(5,1);
 	
@@ -493,6 +569,7 @@ function homeChapter5(){
 	
 	// IMPORTANT to be at the end of the func
 	showHidePrevNext();
+	//console.log("homeChapter5 > iFrameLoad 2");
 }
 // CHAPTER 6
 function mapChapter6ActivityCount(){
@@ -552,6 +629,7 @@ function gotoChapter6Activity(staticChapter6){
 	
 	// IMPORTANT to be at the end of the func
 	showHidePrevNext();
+	//console.log("gotoChapter6Activity")
 }
 function checkChapter6_Completion(){
 	var myChp6CompletionArray = [0,0,0];
@@ -588,19 +666,47 @@ function theEnd(){
 *****************************************************************/
 
 // **************** GLOBAL NEXT PREVIOUS HANDLING **************** 
+function showHideHome(){
+	
+	//console.log("showHideHome > countChapters: "+countChapters+" subChapterCounter: "+subChapterCounter+" countActivity: "+countActivity);
+	
+	if(countChapters == 5 && countActivity >= 13){
+		$("#homeBut").css('visibility','hidden');
+	} else if(countChapters == 6 && subChapterCounter == 1 && countActivity >= 11){
+		$("#homeBut").css('visibility','hidden');
+	} else if(countChapters == 6 && subChapterCounter == 2 && countActivity >= 15){
+		$("#homeBut").css('visibility','hidden');
+		
+	} else if(countChapters == 6 && subChapterCounter == 3 && countActivity >= 24){
+		$("#homeBut").css('visibility','hidden');		
+	} else {
+		$("#homeBut").css('visibility','visible');		
+	}
+	
+	// Activity numbers that SubChapters end > countActivity==11 || countActivity==15 || countActivity==24
+}
 
 function showHidePrevNext(){
 	
-	$("#prevBut").css('visibility','visible');
-	$("#nextBut").css('visibility','visible');
+	// Hide Home in Specific Pages
+	showHideHome();
 	
-	if (chaptersCompleted[countChapters][countActivity-1] == 0){
-		
+	//console.log("showHidePrevNext > countChapters: "+countChapters+" subChapterCounter: "+subChapterCounter+" countActivity: "+countActivity);
+	
+	// ONLY FOR Chapters 6 Menu hide NEXT and PREVIOUS!
+	if (countChapters == 6 && countActivity==1){
+		$("#prevBut").css('visibility','hidden');
+		$("#nextBut").css('visibility','hidden');
+	} else {
+		$("#prevBut").css('visibility','visible');
+		$("#nextBut").css('visibility','visible');
+	}
+	
+	if (chaptersCompleted[countChapters][countActivity-1] == 0){		
 		//alert("NOT COMPLETED");		
 		$("#nextBut").css('opacity','0.5');
-		$("#nextBut").css('pointer-events','none');
-	} else {
-		
+		$("#nextBut").css('pointer-events','none');		
+	} else {		
 		//alert("COMPLETED");		
 		$("#nextBut").css('opacity','1');
 		$("#nextBut").css('pointer-events','all');
@@ -619,13 +725,19 @@ function showHidePrevNext(){
 		$("#nextBut").css('visibility','hidden');
 	}
 	
-	// CHPATER 6 NEXT + BACK Buttons
+	
+	// CHAPTER 5 BACK Buttons
+	if(countChapters == 5 && countActivity >= 13){
+		$("#prevBut").css('visibility','hidden');
+	}
+	
+	// CHAPTER 6 BACK Buttons
 	if(countChapters == 6 && subChapterCounter == 2 && countActivity == 12){
 		$("#prevBut").css('visibility','hidden');
 	} else if(countChapters == 6 && subChapterCounter == 3 && countActivity == 16){
 		$("#prevBut").css('visibility','hidden');
 	}
-	
+	// CHAPTER 6 NEXT Buttons
 	if(countChapters == 6 && subChapterCounter == 1 && countActivity >= 11){
 		$("#nextBut").css('visibility','hidden');
 		
@@ -633,7 +745,7 @@ function showHidePrevNext(){
 		$("#nextBut").css('visibility','hidden');
 		
 	} else if(countChapters == 6 && subChapterCounter == 3 && countActivity >= 24){
-		$("#nextBut").css('visibility','hidden');		
+		$("#nextBut").css('visibility','hidden');	
 	}
 }
 
@@ -656,6 +768,7 @@ function assignChaptersNav(){
 	
 	// Hide Prev - IMPORTANT to be at the end of the func
 	showHidePrevNext();
+	//console.log("assignChaptersNav")
 }
 
 // **************** HOME ***********************
@@ -684,10 +797,11 @@ function goHome(){
 		$("#contentFrame").attr("src", "navigation/"+countChapters+"_"+subMenuChapters[countChapters][countActivity]+"/exercise.html");
 		
 		showHidePrevNext();
+		//console.log("goHome")
 		
 	} // NOT SUBMENU
 	else{
-		
+
 		// HIDE - LOADING FRAME
 		$("iframe").css('display','none');		
 		// HOME Hide/Show
@@ -730,7 +844,7 @@ function goHome(){
 		}
 		
 	}
-	
+
 	/*
 	// REMOVE HOME EVENTS
 	$("#homeBut").unbind("click", goHome);	
@@ -740,6 +854,9 @@ function goHome(){
 // ************ LOAD PAGES > USED FROM MAIN MENU ***
 
 function loadPage(chapterN, pageUrl, goPrev){
+	
+	//console.log("loadPage> chapterN "+chapterN+" pageUrl "+pageUrl);
+	
 	switch (chapterN) {
 		// INTRO PAGES
 		case 0:
@@ -764,15 +881,14 @@ function loadPage(chapterN, pageUrl, goPrev){
 			// REMOVE INTRO NAV EVENTS
 			$("#prevBut").unbind("click", assignNavIntro);
 			$("#nextBut").unbind("click", assignNavIntro);
-			
-			// MENU Hide/Show
-			showHidePrevNext();
-			
-			$("#homeBut").css('visibility','visible');
 			// ADD CHAPTERS NAV EVENTS
 			$("#prevBut").click(assignChaptersNav);
 			//$("#homeBut").click(goHome);	
 			$("#nextBut").click(assignChaptersNav);
+			
+			// MENU Hide/Show
+			showHidePrevNext();
+			//console.log("loadPage case 5");
 			
 			// subChapterCounter - CASE FOR CHAPTER 5 ONLY
 			if (chapterN == 5){
@@ -796,8 +912,7 @@ function loadPage(chapterN, pageUrl, goPrev){
 					//alert("default");
 					break;
 			}
-			
-			//console.log("Chapter 5: chapterN "+chapterN+" pageUrl "+pageUrl);
+
 			
 			//  CHAPTER 6 MENU - HIDE Menu Div
 			$(".menu2").css('display','none');
@@ -811,16 +926,13 @@ function loadPage(chapterN, pageUrl, goPrev){
 			// REMOVE INTRO NAV EVENTS
 			$("#prevBut").unbind("click", assignNavIntro);
 			$("#nextBut").unbind("click", assignNavIntro);
-			
+			// ADD CHAPTERS NAV EVENTS
+			$("#prevBut").click(assignChaptersNav);
+			$("#nextBut").click(assignChaptersNav);
 			
 			// MENU Hide/Show
 			showHidePrevNext();
-			
-			$("#homeBut").css('visibility','visible');
-			// ADD CHAPTERS NAV EVENTS
-			$("#prevBut").click(assignChaptersNav);
-			//$("#homeBut").click(goHome);	
-			$("#nextBut").click(assignChaptersNav);
+			//console.log("loadPage case 6")
 			
 			break;
 		default: 
@@ -849,6 +961,7 @@ function introNextHide(){
 
 // HANDLING Previous or Next for INTRO ONLY
 function assignNavIntro(){
+	
 	if(this.id == "prevBut"){
 		loadPage(0,0,true);
 
@@ -857,12 +970,50 @@ function assignNavIntro(){
 		loadPage(countChapters,countActivity);		
 		// RESET INTRO COUNTER
 		countIntro = 6;
+		
 	} else {
 		loadPage(0,0);
 	}
 }
 
 function handleIntro(prevOrNext){
+	
+	// When the app loads
+	if (firstLoadApp){
+		firstLoadApp = 0;
+		
+		// Check Completion of Intro
+		$.each(chaptersCompleted[0], function(index, value) {					
+			if(value == 1){
+				if(index == 6){
+					countIntro = 5;
+				} else {
+					countIntro = index;
+				}				
+			} 
+		});
+		
+		//alert("countIntro: "+countIntro+" alertArray(chaptersCompleted): " +alertArray(chaptersCompleted))
+		
+		// INTRO ACTIVITY : Slide 4
+		runSlide4DocumentReady();
+		
+		// Remove Animate Classes
+		$('#intro3').removeClass('animated bounceInLeft');
+		$('#intro1').removeClass('animated rotateIn');
+		$('#intro2').removeClass('animated lightSpeedIn');
+		// Hide Intro Graphics
+		$("#intro3").unbind("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", handleIntro);
+		$(".introLogos").css('display','none');
+
+
+		// PAUSE AUDIO
+		document.querySelector("audio").pause();
+		
+		// SHOW PREVIOUS BUTTON
+		$("#prevBut").css('visibility','visible');		
+	}	
+	
 	// Move Screens
 	if(prevOrNext==true){
 		countIntro--;
@@ -871,10 +1022,18 @@ function handleIntro(prevOrNext){
 		// CURRENT screen viewed/completed
 		chaptersCompleted[0][countIntro] = 1;
 		
+		// Update Cookie
+		if(cookieMainJSON){
+			cookieMainJSON.selections[0][countIntro] = chaptersCompleted[0][countIntro];
+		}
+		
 		// UPDATE SCORM
 		if(lmsConnected){
 			saveScormArrays();
 		}
+		
+		// SAVE CHANGES IN COOKIE
+		saveCompletionMainCookie();
 		
 		// Proceed to next screen		
 		countIntro++;
@@ -883,12 +1042,20 @@ function handleIntro(prevOrNext){
 			introNextActivate();
 		} else {
 			introNextHide();
-		}
+		}			
 	}
-	//console.log("handleIntro > prevOrNext: "+prevOrNext+" New countIntro: "+countIntro+" chaptersCompleted: "+alertArray(chaptersCompleted));
-	
+
+	//console.log("handleIntro > Next: "+prevOrNext+" New countIntro: "+countIntro+" chaptersCompleted: "+alertArray(chaptersCompleted));
+
 	switch (countIntro) {
 		case 0:
+
+			// HIDE iFrame Content
+			$("#contentFrame").attr("src", "exercise.html");
+			
+			// PLAY AUDIO
+			document.querySelector("audio").play();		
+			
 			// Show Intro Graphics
 			$(".introLogos").css('display','block');
 			
@@ -905,55 +1072,64 @@ function handleIntro(prevOrNext){
 			$("#intro3").one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", handleIntro);
 			
 			// Hide Videos
-			$("video").css('display','none');
+			//$("video").css('display','none');
 			// Remove End of Video
-			$("video").unbind("ended", handleIntro);
+			//$("video").unbind("ended", handleIntro);
 			
 			// HIDE PREVIOUS
 			$("#prevBut").css('visibility','hidden');
 			
 			// STOP VIDEOS
-			document.querySelector("video").pause();
+			//document.querySelector("video").pause();
 			
 			// VIDEO SCRIPTS HIDE
 			videoScriptHide();
 			
 			break;
 		case 1:
+
 			// Remove Animate Classes
 			$('#intro3').removeClass('animated bounceInLeft');
 			$('#intro1').removeClass('animated rotateIn');
 			$('#intro2').removeClass('animated lightSpeedIn');
 			// Hide Intro Graphics
-			$(".introLogos").css('display','none');
 			$("#intro3").unbind("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", handleIntro);
+			$(".introLogos").css('display','none');
+
+
+			// PAUSE AUDIO
+			document.querySelector("audio").pause();
 			
 			// Show Videos
-			$("video").css('display','block');
-			nextVideo("videos/intro.mp4");
-			//document.querySelector("video").play();						
-			// On End of Video
+			//$("video").css('display','block');
+			nextVideo("intro");					
+			/* On End of Video
 			$("video").unbind("ended", handleIntro);
 			$("video").bind("ended", handleIntro);
-			
-			// SHOW PREVIOUS BUTTON
-			$("#prevBut").css('visibility','visible');
+			*/
 			
 			// VIDEO SCRIPTS
 			videoScriptShow();
-			videoScript1Activate();			
+			videoScript1Activate();	
 			
+			// SHOW PREVIOUS BUTTON
+			$("#prevBut").css('visibility','visible');
+
 			break;
 		case 2:
-			$("video").css('display','block');
+			
+			// PLAY AUDIO
+			document.querySelector("audio").play();
+			
+			//$("video").css('display','block');
 			// STOP VIDEOS
-			document.querySelector("video").pause();
-			nextVideo("videos/intro2.mp4");
+			//document.querySelector("video").pause();
+			nextVideo("intro2");
 			//document.querySelector("video").play();	
-			// On End of Video
+			/* On End of Video
 			$("video").unbind("ended", handleIntro);
 			$("video").bind("ended", handleIntro);
-			
+			*/
 			// Hide 2nd Animation Screen
 			$(".slide4").css('display','none');
 			// Remove Animate Classes
@@ -964,12 +1140,19 @@ function handleIntro(prevOrNext){
 			
 			break;
 		case 3:
+			
+			// HIDE iFrame Content
+			$("#contentFrame").attr("src", "exercise.html");
+			
+			// PLAY AUDIO
+			document.querySelector("audio").play();
+
 			// Hide Videos
-			$("video").css('display','none');
+			//$("video").css('display','none');
 			// Remove End of Video
-			$("video").unbind("ended", handleIntro);
+			//$("video").unbind("ended", handleIntro);
 			// STOP VIDEOS
-			document.querySelector("video").pause();
+			//document.querySelector("video").pause();
 			
 			// Show 2nd Animation Screen
 			$(".slide4").css('display','block');			
@@ -981,38 +1164,46 @@ function handleIntro(prevOrNext){
 			
 			break;
 		case 4:
+			
+			// PAUSE AUDIO
+			document.querySelector("audio").pause();
+			
 			// Hide 2nd Animation Screen
 			$(".slide4").css('display','none');
 			// Remove Animate Classes
 			removeAnimationSlide4();
 			
 			// Show Videos
-			$("video").css('display','block');
+			//$("video").css('display','block');
 			// STOP VIDEOS
-			document.querySelector("video").pause();
-			nextVideo("videos/intro3.mp4");	
+			//document.querySelector("video").pause();
+			nextVideo("intro3");	
 			
-			// On End of Video
+			/* On End of Video
 			$("video").unbind("ended", handleIntro);
 			$("video").bind("ended", handleIntro);
-	
+			*/
 			// VIDEO SCRIPTS
 			videoScriptShow();
 			videoScript2Activate();	
 			
 			break;
 		case 5:
+			
+			// PLAY AUDIO
+			document.querySelector("audio").play();
+			
 			// Show Videos
-			$("video").css('display','block');
+			//$("video").css('display','block');
 			
 			// STOP VIDEOS
-			document.querySelector("video").pause();
-			nextVideo("videos/intro4.mp4");	
+			//document.querySelector("video").pause();
+			nextVideo("intro4");	
 			
-			// On End of Video
+			/* On End of Video
 			$("video").unbind("ended", handleIntro);
 			$("video").bind("ended", handleIntro);
-			
+			*/
 			//  MENU - HIDE Menu Div
 			$(".menu ").css('display','none');
 			// MENU - REMOVE Classes
@@ -1023,16 +1214,22 @@ function handleIntro(prevOrNext){
 			
 			break;
 		case 6:
+			// PLAY AUDIO
+			document.querySelector("audio").play();
+			
+			// HIDE iFrame Content
+			$("#contentFrame").attr("src", "exercise.html");
+			
 			// Last Slide Of Intro
 			
 			// ************** VIDEO *********************
 			
 			//$("video").parent().css('display','none');
-			$("video").css('display','none');
+			//$("video").css('display','none');
 			// STOP VIDEOS
-			document.querySelector("video").pause();
+			//document.querySelector("video").pause();
 			// Remove End of Video
-			$("video").unbind("ended", handleIntro);
+			//$("video").unbind("ended", handleIntro);
 			
 			// ************** MENU *********************
 			
@@ -1054,7 +1251,7 @@ function handleIntro(prevOrNext){
 				setMenu2();	
 				
 			} else {		
-
+				
 				//  MENU - Show Menu Div
 				$(".menu ").css('display','block');
 		
@@ -1073,12 +1270,16 @@ function handleIntro(prevOrNext){
 		
 				/* Chapter 1 */
 				$("#menu1").click(menu1);
+				//$(document).on("click","#menu1", menu1);
 				/* Chapter 2 */
 				$("#menu2").click(menu2);
+				//$(document).on("click","#menu2", menu2);
 				/* Chapter 3 */
 				$("#menu3").click(menu3);
+				//$(document).on("click","#menu3", menu3);
 				/* Chapter 4 */
 				$("#menu4").click(menu4);
+				//$(document).on("click","#menu4", menu4);
 				/* Chapter 5 */
 				//$("#menu4b").click(menu4);
 		
@@ -1093,6 +1294,9 @@ function handleIntro(prevOrNext){
 		default: 
 			break;
 	} // END SWITCH
+	
+	
+	//console.log("HandleIntro > countChapters: "+countChapters+" countActivity: "+countActivity+" !! countIntro: "+countIntro+" chaptersCompleted[0][5]: 1? "+chaptersCompleted[0][5]+" chaptersCompleted: "+alertArray(chaptersCompleted));
 
 }
 
@@ -1129,3 +1333,37 @@ function videoScriptHide(){
 	$("#videoScript2").unbind("click", videoScript2Open);
 	$(".goToLetter").css('display','none');
 }
+
+$(document).ready(function(){
+	
+	// SCORM INIT
+	window.onbeforeunload = unloadHandler;
+	window.onunload = unloadHandler;
+	initCourse();
+			  
+	// 1st End of Animation
+	$("#intro3").one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", handleIntro);
+
+	// Navigation Buttons Click
+	$("#prevBut").css('visibility','hidden');
+	$("#prevBut").click(assignNavIntro);
+	$("#nextBut").click(assignNavIntro);
+	// Home Click
+	$("#homeBut").css('visibility','hidden');
+	$("#homeBut").click(goHome);				
+
+	// Next Button HIDDEN @ Start????
+	introNextHide();	
+	
+	// *** 2nd Menu2 initially hidden ***
+	$(".menu2").css('display','none');
+	
+	// IS MAIN CHAPTERS COMPLETED?
+	// UNLOCK 5th Chapter
+	//checkChaptersCompleted();	
+	
+	$("#contentFrame").attr("src", "exercise.html");
+	
+	//console.log("HandleIntro > countChapters: "+countChapters+" menu2Activated: "+menu2Activated+" countActivity: "+countActivity+" !! countIntro: "+countIntro+" chaptersCompleted: "+alertArray(chaptersCompleted));
+	
+}); // End of $(document).ready

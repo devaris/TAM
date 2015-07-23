@@ -47,7 +47,22 @@ Object.size = function(obj) {
     return size;
 };
 
-$(document).ready(function() {
+function clearCookie(){
+	var myBrowser = get_browser();
+	if ((myBrowser=='Chrome')||(isiPad==true)) {
+		localStorage.setObject(dndCookie,objPositions);
+	}
+	else{
+		if ($.cookie(dndCookie)===null){		
+		}
+		else{
+			cookieJSON = $.cookie(dndCookie)
+		}
+		$.removeCookie(dndCookie);
+	}	
+}
+
+$(document).ready(function() {	
 
     //$.removeCookie(dndCookie)
     $("span.drop").html("");
@@ -126,7 +141,7 @@ $(document).ready(function() {
 				//window.parent.unlockNextLevel();
 				
 				// COMPLETED MAIN ACTIVITY 
-				if(window.top){window.top.activateFor();} else {window.parent.activateFor();}
+				window.parent.activateFor();
 			}
 	    } 
 		else {
@@ -157,6 +172,18 @@ $(document).ready(function() {
     $(".drags  span").each(function(index, element) {
 	objPositions[$(this).attr("id")] = $(this).offset();
     });
+	
+	
+	// RESET
+	var doIreset=false;
+	try {
+		doIreset=window.parent.resetEx();
+	}
+	catch(e){
+	}
+	
+	if (doIreset==true)
+		clearCookie();
 
     var myBrowser = get_browser();
     if ((myBrowser=='Chrome')||(isiPad==true)) {
@@ -208,11 +235,7 @@ $(document).ready(function() {
 		    $(this).draggable('disable');
 		    //				alert ("do something in the html");
 			if (thenext==7){
-				if(window.top){
-					window.top.activateFor();
-				} else {
-					window.parent.activateFor();
-				}
+				window.parent.activateFor();
 			}
 		}
 	    });

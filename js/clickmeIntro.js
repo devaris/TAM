@@ -9,26 +9,6 @@ var slide4_cookieJSON;
 var slide4_myCookieName ='ccTAMex0_4';
 var slide4_cookieLifetime = 365;
 
-var slide4_myBrowser = get_browser();
-if ((slide4_myBrowser=='Chrome')||(isiPad==true)) {
-	if (localStorage.getItem(slide4_myCookieName)===null){	
-		localStorage.setObject(slide4_myCookieName,{'selections':[]})
-		slide4_cookieJSON = localStorage.getObject(slide4_myCookieName)
-	}
-	else{
-		slide4_cookieJSON = localStorage.getObject(slide4_myCookieName)
-	}
-}
-else{
-	$.cookie.json = true;
-	if ($.cookie(slide4_myCookieName)===null){		
-		$.cookie(slide4_myCookieName, {'selections':[]}, slide4_cookieLifetime);
-		slide4_cookieJSON = $.cookie(slide4_myCookieName)
-	}
-	else{
-		slide4_cookieJSON = $.cookie(slide4_myCookieName)
-	}
-}
 
 // FUNCTIONS
 function audioCorrect() {
@@ -124,10 +104,62 @@ function slide4_clickItems(){
 	
 } // END function slide4_clickItems 
 	
-
+	
 function runSlide4DocumentReady(){
 	// Add Interactivity
-	$(".slide4b img").click(slide4_clickItems);	
+	//$(".slide4b img").click(slide4_clickItems);	
+	//$(".slide4b img").on('click',slide4_clickItems);
+	
+	$(document).on("click",".slide4b img", slide4_clickItems);
+	
+	
+	// ******* COOKIES *******
+	
+	var slide4_myBrowser = get_browser();
+	
+	// NOT COMPLETED - RESET
+	if (chaptersCompleted[0][3] == 0){
+		
+		if ((slide4_myBrowser=='Chrome')||(isiPad==true)) {
+			localStorage.setObject(slide4_myCookieName,{'selections':[]});
+		}
+		else{
+			if ($.cookie(slide4_myCookieName)===null){		
+			} else{
+				cookieJSON = $.cookie(slide4_myCookieName)
+			}
+			$.removeCookie(slide4_myCookieName);
+		}	
+		
+		
+		//console.log("RunSlide4DocumentReady > slide4_myBrowser: "+slide4_myBrowser+" countChapters: "+countChapters+" countActivity: "+countActivity+" !! countIntro: "+countIntro+" chaptersCompleted[0][3]?0 : "+chaptersCompleted[0][3]+" ||| chaptersCompleted: "+alertArray(chaptersCompleted));
+
+	} 
+	
+		
+	// CREATE COOKIES
+	if ((slide4_myBrowser=='Chrome')||(isiPad==true)) {
+		if (localStorage.getItem(slide4_myCookieName)===null){	
+			localStorage.setObject(slide4_myCookieName,{'selections':[]})
+			slide4_cookieJSON = localStorage.getObject(slide4_myCookieName)
+		}
+		else{
+			slide4_cookieJSON = localStorage.getObject(slide4_myCookieName)
+		}
+	}
+	else{
+		$.cookie.json = true;
+		if ($.cookie(slide4_myCookieName)===null){		
+			$.cookie(slide4_myCookieName, {'selections':[]}, slide4_cookieLifetime);
+			slide4_cookieJSON = $.cookie(slide4_myCookieName)
+		}
+		else{
+			slide4_cookieJSON = $.cookie(slide4_myCookieName)
+		}
+	}
+	
+	
+		
 }
 function removeAnimationSlide4(){
 	/* Remove animation*/

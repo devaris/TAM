@@ -1,0 +1,188 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	overflow: hidden;	
+}
+
+#truefalses{
+	position:absolute;
+	top: 267px;
+	width: 1024px;  
+}
+
+.TrueFalse {
+	border:thick;	
+	/*padding: 0.5em; */
+	margin: 10px 10px 10px 0; 
+	/*background: #FFF;*/
+}
+
+.TrueFalse ul li {
+	height: 50px;
+    position: relative;
+}
+
+.TrueFalse ul li span {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+.stem {
+	font-family:BEBASNEUE;
+	font-size:32px;
+	vertical-align:middle;
+	color:#fff;	
+	position:absolute;
+	left:36px;
+}
+
+.mymark {
+	left: 0;
+    position: absolute;
+    top: 0;
+}
+
+li.column0 .correct {
+	top: 34px;
+	left: 44px;
+}
+
+li.column1 .wrong {
+	/*top: 38px;
+	left: 44px;*/
+}
+
+li.column2 .wrong {
+	top: 46px;
+	left: 44px;
+}
+
+.hideMe{
+	display:none;
+}
+
+.showMe{
+	display:block;
+	z-index:1;
+}
+
+.showCorr {
+    color: blue;
+}
+
+.checkCorr {
+    color: green;
+}
+
+.highme {
+	background-color:#CCC;
+}
+
+#readTextarea .under {
+   	text-decoration: none;
+	background-color:#CCC;
+}
+
+.checkWron {
+    color: red;
+}
+
+.sidebarCont2{
+	/*margin-top: 150px;*/
+	border:thick;
+	width: 350px;  
+	padding: 0.5em; 
+	margin: 10px 10px 10px 0; 
+	background: #DDD;
+}
+
+.MyExercise {
+    display: inline;
+    float: left;
+    width: 1024px;
+	position:relative;
+	left:0px;
+	top:0px;
+	height:768px;
+}
+
+UL { padding: 28px; }
+
+UL LI { 
+    color: #4D1248;
+    cursor: pointer;
+    font-family: blissregular;
+    list-style: none outside none;
+}
+
+.thisIsCorrect{
+	/*background-color: #E4003A;
+    color: #FFFFFF;*/
+}
+
+#tf1{
+	left: 370px;
+    position: absolute;
+    top: 69px;
+}
+
+#tf2{
+	left: 310px;
+    position: absolute;
+    top: 202px;
+}
+
+#tf3{
+	left: 493px;
+    position: absolute;
+    top: 6px;
+}
+
+#tf4{
+	left: 493px;
+    position: absolute;
+    top: 205px;
+}
+
+.invisible{
+	opacity: 0;
+}
+
+.make_visible{
+	opacity: 1;
+}
+
+.theTable {
+    bottom: 0;
+    left: 4px;
+    position: absolute;
+}
+
+.goToLetter {
+	cursor:	pointer;
+    bottom: 183px;
+    left: 217px;
+    position: absolute;
+}
+
+.nextInner {
+     bottom: 189px;
+    left: 842px;
+    position: absolute;
+}
+
+
+#actImage {
+    left: 156px;
+    position: absolute;
+    top: 251px;
+}
+
+#actLetter {
+    left: 277px;
+    position: absolute;
+    top: 196px;
+    z-index: 10;
+}

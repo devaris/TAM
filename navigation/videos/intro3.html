@@ -10,7 +10,13 @@
 
 <body>
 	
+	<video preload="yes" autoplay="true" width="1024" height="768">
+        <source src="http://crystalclearserver.com/ftp/cchellenic/TAM/application/videos/intro3.mp4" type="video/mp4">
+    </video>
+    
+    <!--
     <video autoplay controls="true" width='1024' height='768' src='http://crystalclearserver.com/ftp/cchellenic/TAM/application/videos/small/intro3.mp4' type='video/mp4'></video>
+    -->
     
     <!--
 	<video width="1024" height="768">
@@ -25,6 +31,11 @@
 		var myVideo = document.getElementsByTagName("video")[0];
 		myVideo.play();
 		$("video").bind("ended", window.parent.handleIntro);
+		
+		document.addEventListener('touchstart', function(event) {
+		 myVideo.play();
+		}, false);
+		
 	</script>
 
 

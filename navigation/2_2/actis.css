@@ -5,8 +5,12 @@ body {
 	overflow: hidden;	
 }
 
+ul.filled, ul.unfilled, ul.larges{
+	display: none;
+}
+
 #myImage {
-    background-color:#361935;
+    /*background-color:#361935;*/
     height:718px;
 	position:relative;
     width:1024px;
@@ -110,7 +114,7 @@ ul.filled > li {
     position: relative;
     top: -313px;
  }
- 
+
  .invisible{
 	opacity: 0;
 }

@@ -1,0 +1,178 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	overflow: hidden;	
+}
+
+#truefalses{
+	position:absolute;
+	top: 241px;
+	width: 1024px;  
+}
+
+.TrueFalse {
+	border:thick;	
+	/*padding: 0.5em; */
+	margin: 10px 10px 10px 0; 
+	/*background: #FFF;*/
+}
+
+.stem {
+	font-family:BEBASNEUE;
+	font-size:32px;
+	vertical-align:middle;
+	color:#fff;	
+	position:absolute;
+	left:36px;
+}
+
+.mymark {
+	left: 0;
+    position: absolute;
+    top: 0;
+}
+
+.hideMe{
+	display:none;
+}
+
+.showMe{
+	display:block;
+}
+
+.showCorr {
+    color: blue;
+}
+
+.checkCorr {
+    color: green;
+}
+
+.highme {
+	background-color:#CCC;
+}
+
+#readTextarea .under {
+   	text-decoration: none;
+	background-color:#CCC;
+}
+
+.checkWron {
+    color: red;
+}
+
+.sidebarCont2{
+	/*margin-top: 150px;*/
+	border:thick;
+	width: 350px;  
+	padding: 0.5em; 
+	margin: 10px 10px 10px 0; 
+	background: #DDD;
+}
+
+.MyExercise {
+    display: inline;
+    float: left;
+    width: 1024px;
+	position:relative;
+	left:0px;
+	top:0px;
+	height:718px;
+}
+
+UL { padding: 28px; }
+
+UL LI { 
+    color: #4D1248;
+    cursor: pointer;
+    font-family: blissregular;
+    list-style: none outside none;
+    margin: 0 47px 10px 22px;
+    width: 300px;
+}
+
+.thisIsCorrect{
+	/*background-color: #E4003A;
+    color: #FFFFFF;*/
+}
+
+#tf1{
+	/*left: 182px;
+    position: absolute;
+	top:20px;	*/
+}
+
+#tf2{
+	left: 182px;
+    position: absolute;
+    top: 202px;
+}
+
+#tf3{
+	left: 493px;
+    position: absolute;
+    top: 6px;
+}
+
+#tf4{
+	left: 493px;
+    position: absolute;
+    top: 205px;
+}
+
+.invisible{
+	opacity: 0;
+}
+
+.make_visible{
+	opacity: 1;
+}
+
+.column0 {
+    left: 297px;
+    position: absolute;
+    top: 111px;
+	-ms-transform-origin: initial !important; /* IE 9 */
+    -webkit-transform-origin: initial  !important; /* Chrome, Safari, Opera */
+    transform-origin: initial  !important;
+	-ms-transform-origin: 65% 5% !important; /* IE 9 */
+    -webkit-transform-origin: 65% 5% !important; /* Chrome, Safari, Opera */
+    transform-origin: 65% 5% !important;
+}
+
+.column1 {
+    left: 33px;
+    position: absolute;
+    top: 307px;
+	-ms-transform-origin: initial !important; /* IE 9 */
+    -webkit-transform-origin: initial  !important; /* Chrome, Safari, Opera */
+    transform-origin: initial  !important;
+	-ms-transform-origin: 22% 10% !important; /* IE 9 */
+    -webkit-transform-origin: 22% 10% !important; /* Chrome, Safari, Opera */
+    transform-origin: 22% 10% !important;
+}
+
+.column2 {
+    left: 578px;
+    position: absolute;
+    top: 297px;
+	-ms-transform-origin: initial !important; /* IE 9 */
+    -webkit-transform-origin: initial  !important; /* Chrome, Safari, Opera */
+    transform-origin: initial  !important;
+	-ms-transform-origin: 55% 5% !important; /* IE 9 */
+    -webkit-transform-origin: 55% 5% !important; /* Chrome, Safari, Opera */
+    transform-origin: 55% 5% !important;
+}
+
+.column3 {
+    left: 588px;
+    position: absolute;
+    top: 108px;
+	-ms-transform-origin: initial !important; /* IE 9 */
+    -webkit-transform-origin: initial  !important; /* Chrome, Safari, Opera */
+    transform-origin: initial  !important;
+	-ms-transform-origin: 45% 0% !important; /* IE 9 */
+    -webkit-transform-origin: 45% 0% !important; /* Chrome, Safari, Opera */
+    transform-origin: 45% 0% !important;
+}

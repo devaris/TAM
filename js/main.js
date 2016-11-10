@@ -1339,6 +1339,21 @@ $(document).ready(function(){
 	// SCORM INIT
 	window.onbeforeunload = unloadHandler;
 	window.onunload = unloadHandler;
+	
+	window.top.onbeforeunload = function()
+	{
+		//console.warn("closing.connection.onbeforeunload")
+		 unloadHandler();
+	}
+	
+	window.top.onunload = function() 
+	{
+		//console.warn("closing.connection")
+		 unloadHandler();
+	}
+	
+	
+	
 	initCourse();
 			  
 	// 1st End of Animation

@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Exercise 0</title>
+<link rel="stylesheet" href="../../fonts/webfonts.css">
+<link rel="stylesheet" href="../../css/animate.css">
+<link rel="stylesheet" href="../../css/common.css">
+<link rel="stylesheet" href="actis.css" type="text/css" media="screen, projection" />
+<script src="../../js/jquery.js"></script>
+<script src="../../js/jquery-ui.js"></script>
+<script src="../../js/jquery.cookie.js"></script>
+<script src="../../js/jquery.ui.touch-punch.min.js"></script>
+<script src="../../js/common.js"></script>
+<script src="../../js/animation.js"></script>
+<script src="thisact.js"></script>
+<script src="../../js/audiocw.js"></script>
+
+<script>
+$(document).ready(function() {
+	 /*$(".choice0").on("click", function(){
+		  window.location.href = "0/exercise.html";
+	 });*/
+	 $(".choice1").on("click", function(){
+		//window.location.href = "1/exercise.html";
+		window.parent.moveAtSubMenus(1);
+	 });
+	 $(".choice2").on("click", function(){
+		//window.location.href = "2/exercise.html";
+		window.parent.moveAtSubMenus(2);
+	 });
+	 $(".choice3").on("click", function(){
+		//window.location.href = "3/exercise.html";
+		window.parent.moveAtSubMenus(3);
+	 });
+	 
+	 // COMPLETED MAIN ACTIVITY 
+	window.parent.activateFor();
+
+});
+</script>
+</head>
+<body>
+    <div id="myImage"> <img src="../../images/exBackground.jpg" alt="Exercise Image" name="exImage" width="1024" height="768" id="exImage"> </div>
+    <div  class="exLabel animated bounceInDown"><img src="corner_label.png" alt="Exercise Label" name="exLabel" width="232" height="165"></div>
+    <div  class="exRubric animated bounceInDown"><img src="rubric.png" alt="Exercise Rubric" name="exRubric" width="789" height="293"></div>
+    <div  class="exBottle animated bounceInDown"><img src="bottle.png" alt="Exercise Bottle" name="exBottle" width="463" height="122"></div>
+</div>
+<div class="extraInfo animated zoomIn"><img src="s32_board.png" alt="Extra Info" width="505" height="457"></div>
+<div style="position: absolute; top: 387px; left: 72px;"> 
+	<img src="s32_arrows.png" alt="Arrows" width="388" height="210">
+  	<ul class="choices">
+        <li class="choice0 animated bounceIn"><img src="s32_picture1.png" alt="Picture 1" width="202" height="176"></li>
+        <li class="choice1 animated bounceIn"><img src="s32_picture2.png" alt="Picture 2" width="167" height="145"></li>
+        <li class="choice2 animated bounceIn"><img src="s32_picture3.png" alt="Picture 3" width="167" height="145"></li>
+        <li class="choice3 animated bounceIn"><img src="s32_picture4.png" alt="Picture 4" width="167" height="145"></li>
+    </ul>
+</div>
+<!--<script src="../../js/retina-1.1.0.min.js"></script>-->
+</body>
+</html>

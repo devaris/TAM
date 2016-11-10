@@ -217,6 +217,7 @@ function saveScormArrays(){
 	
 	var savedData = scorm.set("cmi.suspend_data", tempString);
 	// SAVE ALL INIT
+	scorm.set("cmi.exit", "suspend");
 	scorm.save();
 	
 	var myTotalScormScore = myScormScore/myScormScoreCounter;
@@ -266,6 +267,7 @@ function setInComplete(){
 function unloadHandler(){
 
 	traceMsg("unloadHandler");
+	//console.warn("closing.connection.onbeforeunload | onunload");
 	
 	if(!unloaded){
 		traceMsg("Save on Quit");
